@@ -1,27 +1,35 @@
 const gulp = require('gulp')
 
 const postcss = require('gulp-postcss')
-const postCssImport = require('postcss-import')
-const postCssUrl = require('postcss-url')
-const postCssCustomProperties = require('postcss-custom-properties')
-const postCssCalc = require('postcss-calc')
-const postCssColorFunction = require('postcss-color-function')
-const postCssCustomMedia = require('postcss-custom-media')
-const postCssPseudoElements = require('postcss-pseudoelements')
-const autoprefixer = require('autoprefixer')
+const processors = [
+  require('postcss-import'),
+  require('postcss-url'),
+  require('postcss-custom-properties'),
+  require('postcss-calc'),
+  require('postcss-color-function'),
+  require('postcss-custom-media'),
+  require('postcss-pseudoelements'),
+  require('autoprefixer')
+]
+const stylelint = require('gulp-stylelint')
 
 gulp.task('css', function() {
-  const processors = [
-    postCssImport,
-    postCssUrl,
-    postCssCustomProperties,
-    postCssCalc,
-    postCssColorFunction,
-    postCssCustomMedia,
-    postCssPseudoElements,
-    autoprefixer
-  ]
   return gulp.src('./src/index.css')
     .pipe(postcss(processors))
     .pipe(gulp.dest('./dist'))
+})
+
+gulp.task('stylelint', function() {
+  return gulp.src('./src/index.css')
+    .pipe(stylelint(
+      {
+        reporters: [
+          {
+            formatter: 'string',
+            console: true
+          }
+        ]
+      }
+    )
+  )
 })
