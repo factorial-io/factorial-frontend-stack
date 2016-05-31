@@ -1,0 +1,11 @@
+{
+  "name": "factorial-frontend-stack",
+  "version": "1.0.0",
+  "description": "A functional boilerplate of the Factorial frontend stack.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Milan Matull <milan@factorial.io>",
+  "license": "MIT"
+}
