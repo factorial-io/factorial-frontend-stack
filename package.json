@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "npm-run-all test:*",
-    "test:css": "gulp stylelint",
+    "test:lint-js": "gulp standard",
+    "test:lint-css": "gulp stylelint",
     "build": "npm-run-all build:*",
     "build:css": "gulp css",
+    "build:js": "gulp js",
     "build:svg": "gulp svg-sprite"
   },
   "author": "Milan Matull <milan@factorial.io>",
@@ -15,11 +17,16 @@
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "babel-preset-es2015": "^6.9.0",
+    "browserify": "^13.0.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-postcss": "^6.1.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-standard": "^7.0.1",
     "gulp-stylelint": "^2.0.2",
     "gulp-svg-sprite": "^1.3.1",
+    "gulp-util": "^3.0.7",
+    "lodash": "^4.13.1",
     "npm-run-all": "^2.1.1",
     "postcss-calc": "^5.2.1",
     "postcss-color-function": "^2.0.1",
@@ -29,6 +36,9 @@
     "postcss-pseudoelements": "^3.0.0",
     "postcss-url": "^5.1.2",
     "stylelint": "^6.5.1",
-    "stylelint-config-factorial": "^7.0.2"
+    "stylelint-config-factorial": "^7.0.2",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
   }
 }
