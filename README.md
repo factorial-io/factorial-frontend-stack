@@ -17,4 +17,4 @@
 build | Compile and bundle all CSS and JS files.
 build:css | Compile and bundle all CSS files.
 test | Run all tests.
-test:stylelint | Run CSS conformance tests.
+test:css | Run CSS conformance tests.

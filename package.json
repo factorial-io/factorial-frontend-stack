@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "npm-run-all test:*",
-    "test:stylelint": "gulp stylelint",
+    "test:css": "gulp stylelint",
     "build": "npm-run-all build:*",
-    "build:css": "gulp css"
+    "build:css": "gulp css",
+    "build:svg": "gulp svg-sprite"
   },
   "author": "Milan Matull <milan@factorial.io>",
   "license": "MIT",

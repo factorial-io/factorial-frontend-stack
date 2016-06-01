@@ -12,6 +12,7 @@ const processors = [
   require('autoprefixer')
 ]
 const stylelint = require('gulp-stylelint')
+const svgSprite = require('gulp-svg-sprite');
 
 gulp.task('css', function() {
   return gulp.src('./src/index.css')
@@ -33,3 +34,19 @@ gulp.task('stylelint', function() {
     )
   )
 })
+
+gulp.task('svg-sprite', function() {
+  const config = {
+    mode: {
+      symbol: {
+        render: {
+          scss: true
+        },
+        example: true
+      }
+    }
+  }
+  gulp.src('**/*.svg', {cwd: 'source/assets/svg/input'})
+    .pipe(svgSprite(config))
+    .pipe(gulp.dest('source/assets/svg/output'));
+});
