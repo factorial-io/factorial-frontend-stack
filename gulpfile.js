@@ -34,24 +34,6 @@ gulp.task('stylelint', function() {
   )
 })
 
-const svgSprite = require('gulp-svg-sprite');
-
-gulp.task('svg-sprite', function() {
-  const config = {
-    mode: {
-      symbol: {
-        render: {
-          scss: true
-        },
-        example: true
-      }
-    }
-  }
-  gulp.src('**/*.svg', {cwd: './src/assets/svg'})
-    .pipe(svgSprite(config))
-    .pipe(gulp.dest('./dist/svg'));
-});
-
 /*
  * Watchify bundle
  *
@@ -97,20 +79,6 @@ function bundle() {
     .pipe(sourcemaps.write('./')) // writes .map file
     .pipe(gulp.dest('./dist'));
 }
-
-/*
- * Lint JS: Standard style
- */
-
-const standard = require('gulp-standard')
-
-gulp.task('standard', function () {
-  return gulp.src(['./src/index.js', 'gulpfile.js'])
-    .pipe(standard())
-    .pipe(standard.reporter('default', {
-      breakOnError: true
-    }))
-})
 
 /*
  * Lint JS: Eslint
