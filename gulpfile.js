@@ -1,5 +1,4 @@
 const gulp = require('gulp')
-
 const postcss = require('gulp-postcss')
 const processors = [
   require('postcss-import'),
@@ -48,9 +47,9 @@ gulp.task('svg-sprite', function() {
       }
     }
   }
-  gulp.src('**/*.svg', {cwd: 'source/assets/svg/input'})
+  gulp.src('**/*.svg', {cwd: './src/assets/svg'})
     .pipe(svgSprite(config))
-    .pipe(gulp.dest('source/assets/svg/output'));
+    .pipe(gulp.dest('./dist/svg'));
 });
 
 /*
@@ -100,15 +99,39 @@ function bundle() {
 }
 
 /*
- * Lint JS
+ * Lint JS: Standard style
  */
 
 const standard = require('gulp-standard')
 
 gulp.task('standard', function () {
-  return gulp.src(['./src/index.js'])
+  return gulp.src(['./src/index.js', 'gulpfile.js'])
     .pipe(standard())
     .pipe(standard.reporter('default', {
       breakOnError: true
     }))
 })
+
+/*
+ * Lint JS: Eslint
+ */
+
+const eslint = require('gulp-eslint')
+
+gulp.task('eslint', function () {
+  return gulp.src(['./src/index.js', 'gulpfile.js'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+})
+
+/*
+ * Deploy
+ */
+
+const ghPages = require('gulp-gh-pages');
+
+gulp.task('deploy', function() {
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages());
+});

@@ -1,5 +1,8 @@
 module.exports = {
-  foo: function () {
-    return 'bar'
-  }
-}
+  foo() {
+    return 'bar';
+  },
+  bar: {
+
+  },
+};
