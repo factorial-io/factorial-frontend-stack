@@ -1,5 +1,5 @@
-const gulp = require('gulp')
-const postcss = require('gulp-postcss')
+const gulp = require('gulp');
+const postcss = require('gulp-postcss');
 const processors = [
   require('postcss-import'),
   require('postcss-url'),
@@ -8,16 +8,16 @@ const processors = [
   require('postcss-color-function'),
   require('postcss-custom-media'),
   require('postcss-pseudoelements'),
-  require('autoprefixer')
-]
+  require('autoprefixer'),
+];
 
 gulp.task('css', function() {
   return gulp.src('./src/index.css')
     .pipe(postcss(processors))
-    .pipe(gulp.dest('./dist'))
-})
+    .pipe(gulp.dest('./dist'));
+});
 
-const stylelint = require('gulp-stylelint')
+const stylelint = require('gulp-stylelint');
 
 gulp.task('stylelint', function() {
   return gulp.src('./src/index.css')
@@ -26,13 +26,13 @@ gulp.task('stylelint', function() {
         reporters: [
           {
             formatter: 'string',
-            console: true
-          }
-        ]
+            console: true,
+          },
+        ],
       }
     )
-  )
-})
+  );
+});
 
 /*
  * Watchify bundle
@@ -40,21 +40,21 @@ gulp.task('stylelint', function() {
  * SEE: https://github.com/gulpjs/gulp/blob/master/docs/recipes/fast-browserify-builds-with-watchify.md
  */
 
-const watchify = require('watchify')
-const browserify = require('browserify')
-const source = require('vinyl-source-stream')
-const buffer = require('vinyl-buffer')
-const gutil = require('gulp-util')
-const sourcemaps = require('gulp-sourcemaps')
+const watchify = require('watchify');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+const gutil = require('gulp-util');
+const buffer = require('vinyl-buffer');
+const sourcemaps = require('gulp-sourcemaps');
 const _ = {
-  assign: require('lodash/assign')
-}
+  assign: require('lodash/assign'),
+};
 
 
 // add custom browserify options here
 const customOpts = {
   entries: ['./src/index.js'],
-  debug: true
+  debug: true,
 };
 const opts = _.assign({}, watchify.args, customOpts);
 const b = watchify(browserify(opts));
@@ -91,7 +91,7 @@ gulp.task('eslint', function () {
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
-})
+});
 
 /*
  * Deploy
@@ -102,4 +102,17 @@ const ghPages = require('gulp-gh-pages');
 gulp.task('deploy', function() {
   return gulp.src('./dist/**/*')
     .pipe(ghPages());
+});
+
+
+/*
+ * Connect
+ */
+
+const connect = require('gulp-connect');
+
+gulp.task('connect', function() {
+  connect.server({
+    root: 'dist',
+  });
 });
