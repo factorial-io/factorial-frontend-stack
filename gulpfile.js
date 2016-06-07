@@ -1,5 +1,6 @@
-const gulp = require('gulp');
-const postcss = require('gulp-postcss');
+import gulp from 'gulp';
+
+import postcss from 'gulp-postcss';
 const processors = [
   require('postcss-import'),
   require('postcss-url'),
@@ -10,46 +11,33 @@ const processors = [
   require('postcss-pseudoelements'),
   require('autoprefixer'),
 ];
+gulp.task('css', () => gulp.src('./src/index.css')
+  .pipe(postcss(processors))
+  .pipe(gulp.dest('./dist')));
 
-gulp.task('css', function() {
-  return gulp.src('./src/index.css')
-    .pipe(postcss(processors))
-    .pipe(gulp.dest('./dist'));
-});
+import stylelint from 'gulp-stylelint';
+gulp.task('stylelint', () => gulp.src('./src/index.css')
+  .pipe(stylelint(
+    {
+      reporters: [
+        {
+          formatter: 'string',
+          console: true,
+        },
+      ],
+    }
+  )
+));
 
-const stylelint = require('gulp-stylelint');
-
-gulp.task('stylelint', function() {
-  return gulp.src('./src/index.css')
-    .pipe(stylelint(
-      {
-        reporters: [
-          {
-            formatter: 'string',
-            console: true,
-          },
-        ],
-      }
-    )
-  );
-});
-
-/*
- * Watchify bundle
- *
- * SEE: https://github.com/gulpjs/gulp/blob/master/docs/recipes/fast-browserify-builds-with-watchify.md
- */
-
-const watchify = require('watchify');
-const browserify = require('browserify');
-const source = require('vinyl-source-stream');
-const gutil = require('gulp-util');
-const buffer = require('vinyl-buffer');
-const sourcemaps = require('gulp-sourcemaps');
+import watchify from 'watchify';
+import browserify from 'browserify';
+import source from 'vinyl-source-stream';
+import gutil from 'gulp-util';
+import buffer from 'vinyl-buffer';
+import sourcemaps from 'gulp-sourcemaps';
 const _ = {
   assign: require('lodash/assign'),
 };
-
 
 // add custom browserify options here
 const customOpts = {
@@ -74,45 +62,32 @@ function bundle() {
     // optional, remove if you don't need to buffer file contents
     .pipe(buffer())
     // optional, remove if you dont want sourcemaps
-    .pipe(sourcemaps.init({loadMaps: true})) // loads map from browserify file
+    .pipe(sourcemaps.init({ loadMaps: true })) // loads map from browserify file
      // Add transformation tasks to the pipeline here.
     .pipe(sourcemaps.write('./')) // writes .map file
     .pipe(gulp.dest('./dist'));
 }
 
-/*
- * Lint JS: Eslint
- */
+import eslint from 'gulp-eslint';
+gulp.task('eslint', () => gulp.src(['./src/index.js', 'gulpfile.js'])
+  .pipe(eslint())
+  .pipe(eslint.format())
+  .pipe(eslint.failAfterError()));
 
-const eslint = require('gulp-eslint')
-
-gulp.task('eslint', function () {
-  return gulp.src(['./src/index.js', 'gulpfile.js'])
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
-});
-
-/*
- * Deploy
- */
-
-const ghPages = require('gulp-gh-pages');
-
-gulp.task('deploy', function() {
-  return gulp.src('./dist/**/*')
-    .pipe(ghPages());
-});
+import ghPages from 'gulp-gh-pages';
+gulp.task('deploy', () => gulp.src('./dist/**/*')
+  .pipe(ghPages()));
 
 
-/*
- * Connect
- */
-
-const connect = require('gulp-connect');
-
-gulp.task('connect', function() {
+import connect from 'gulp-connect';
+gulp.task('connect', () => {
   connect.server({
     root: 'dist',
   });
 });
+
+import ava from 'gulp-ava';
+gulp.task('ava', () =>
+  gulp.src('test/index.js')
+    .pipe(ava())
+);
