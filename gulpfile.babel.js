@@ -13,7 +13,7 @@ const processors = [
 ];
 gulp.task('css', () => gulp.src('./src/index.css')
   .pipe(postcss(processors))
-  .pipe(gulp.dest('./dist')));
+  .pipe(gulp.dest('build')));
 
 import stylelint from 'gulp-stylelint';
 gulp.task('stylelint', () => gulp.src('./src/index.css')
@@ -65,7 +65,7 @@ function bundle() {
     .pipe(sourcemaps.init({ loadMaps: true })) // loads map from browserify file
      // Add transformation tasks to the pipeline here.
     .pipe(sourcemaps.write('./')) // writes .map file
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('build'));
 }
 
 import eslint from 'gulp-eslint';
@@ -75,9 +75,8 @@ gulp.task('eslint', () => gulp.src(['./src/index.js', 'gulpfile.js'])
   .pipe(eslint.failAfterError()));
 
 import ghPages from 'gulp-gh-pages';
-gulp.task('deploy', () => gulp.src('./dist/**/*')
+gulp.task('deploy', () => gulp.src('build/**/*')
   .pipe(ghPages()));
-
 
 import connect from 'gulp-connect';
 gulp.task('connect', () => {
@@ -88,6 +87,6 @@ gulp.task('connect', () => {
 
 import ava from 'gulp-ava';
 gulp.task('ava', () =>
-  gulp.src('test/index.js')
+  gulp.src('test/test.js')
     .pipe(ava())
 );
