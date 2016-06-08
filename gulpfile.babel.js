@@ -2,14 +2,14 @@ import gulp from 'gulp';
 
 import postcss from 'gulp-postcss';
 const processors = [
-  import 'postcss-import',
-  import 'postcss-url',
-  import 'postcss-custom-properties',
-  import 'postcss-calc',
-  import 'postcss-color-function',
-  import 'postcss-custom-media',
-  import 'postcss-pseudoelements',
-  import 'autoprefixer',
+  require('postcss-import'),
+  require('postcss-url'),
+  require('postcss-custom-properties'),
+  require('postcss-calc'),
+  require('postcss-color-function'),
+  require('postcss-custom-media'),
+  require('postcss-pseudoelements'),
+  require('autoprefixer'),
 ];
 gulp.task('css', () => gulp.src('./src/index.css')
   .pipe(postcss(processors))
@@ -87,6 +87,12 @@ gulp.task('connect', () => {
 
 import ava from 'gulp-ava';
 gulp.task('ava', () =>
-  gulp.src('test/test.js')
+  gulp.src('test/unit/unit.js')
     .pipe(ava())
+);
+
+import mochaPhantomJS from 'gulp-mocha-phantomjs';
+gulp.task('mocha', () =>
+  gulp.src('test/behavior/behavior.html')
+    .pipe(mochaPhantomJS())
 );
