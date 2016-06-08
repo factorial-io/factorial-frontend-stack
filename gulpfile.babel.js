@@ -1,6 +1,11 @@
 import gulp from 'gulp';
-
 import postcss from 'gulp-postcss';
+import stylelint from 'gulp-stylelint';
+import eslint from 'gulp-eslint';
+import connect from 'gulp-connect';
+import ava from 'gulp-ava';
+import mochaPhantomJS from 'gulp-mocha-phantomjs';
+
 const processors = [
   require('postcss-import'),
   require('postcss-url'),
@@ -12,12 +17,11 @@ const processors = [
   require('autoprefixer'),
 ];
 
-gulp.task('css', () => gulp.src('./src/index.css')
+gulp.task('css', () => gulp.src('lib/index.css')
   .pipe(postcss(processors))
   .pipe(gulp.dest('build')));
 
-import stylelint from 'gulp-stylelint';
-gulp.task('stylelint', () => gulp.src('./src/index.css')
+gulp.task('stylelint', () => gulp.src('lib/index.css')
   .pipe(stylelint(
     {
       reporters: [
@@ -30,66 +34,71 @@ gulp.task('stylelint', () => gulp.src('./src/index.css')
   )
 ));
 
-import watchify from 'watchify';
-import browserify from 'browserify';
-import source from 'vinyl-source-stream';
-import gutil from 'gulp-util';
-import buffer from 'vinyl-buffer';
-import sourcemaps from 'gulp-sourcemaps';
-const _ = {
-  assign: require('lodash/assign'),
-};
-
-// add custom browserify options here
-const customOpts = {
-  entries: ['./src/index.js'],
-  debug: true,
-};
-const opts = _.assign({}, watchify.args, customOpts);
-const b = watchify(browserify(opts));
-
-// add transformations here
-// i.e. b.transform(coffeeify);
-
-gulp.task('js', bundle); // so you can run `gulp js` to build the file
-b.on('update', bundle); // on any dep update, runs the bundler
-b.on('log', gutil.log); // output build logs to terminal
-
-function bundle() {
-  return b.bundle()
-    // log errors if they happen
-    .on('error', gutil.log.bind(gutil, 'Browserify Error'))
-    .pipe(source('index.js'))
-    // optional, remove if you don't need to buffer file contents
-    .pipe(buffer())
-    // optional, remove if you dont want sourcemaps
-    .pipe(sourcemaps.init({ loadMaps: true })) // loads map from browserify file
-     // Add transformation tasks to the pipeline here.
-    .pipe(sourcemaps.write('./')) // writes .map file
-    .pipe(gulp.dest('build'));
-}
-
-import eslint from 'gulp-eslint';
-gulp.task('eslint', () => gulp.src(['./src/index.js', 'gulpfile.js'])
+gulp.task('eslint', () => gulp.src(['lib/index.js', 'gulpfile.js'])
   .pipe(eslint())
   .pipe(eslint.format())
   .pipe(eslint.failAfterError()));
 
-import connect from 'gulp-connect';
 gulp.task('connect', () => {
   connect.server({
     root: 'dist',
   });
 });
 
-import ava from 'gulp-ava';
 gulp.task('ava', () =>
   gulp.src('test/unit/unit.js')
     .pipe(ava())
 );
 
-import mochaPhantomJS from 'gulp-mocha-phantomjs';
 gulp.task('mocha', () =>
   gulp.src('test/behavior/behavior.html')
     .pipe(mochaPhantomJS())
 );
+
+// bundlejs
+
+import sourcemaps from 'gulp-sourcemaps';
+import exit from 'gulp-exit';
+import source from 'vinyl-source-stream';
+import buffer from 'vinyl-buffer';
+import browserify from 'browserify';
+import watchify from 'watchify';
+import babel from 'babelify';
+
+function compile(flag) {
+  const bundler = watchify(browserify('./lib/index.js', { debug: true }).transform(babel));
+
+  function rebundle() {
+    return bundler
+      .bundle()
+      .on('error', (err) => {
+        console.error(err);
+        this.emit('end');
+      })
+      .pipe(source('build.js'))
+      .pipe(buffer())
+      .pipe(sourcemaps.init({ loadMaps: true }))
+      .pipe(sourcemaps.write('./'))
+      .pipe(gulp.dest('./build'));
+      // .pipe(exit());
+  }
+
+  if (flag) {
+    bundler.on('update', () => {
+      console.log('-> bundling...');
+      rebundle();
+    });
+
+    rebundle();
+  } else {
+    rebundle().pipe(exit());
+  }
+}
+
+function watch() {
+  return compile(true);
+}
+
+gulp.task('build', () => compile());
+gulp.task('watch', () => watch());
+gulp.task('default', ['watch']);
