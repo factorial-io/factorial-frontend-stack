@@ -2,14 +2,14 @@ import gulp from 'gulp';
 
 import postcss from 'gulp-postcss';
 const processors = [
-  require('postcss-import'),
-  require('postcss-url'),
-  require('postcss-custom-properties'),
-  require('postcss-calc'),
-  require('postcss-color-function'),
-  require('postcss-custom-media'),
-  require('postcss-pseudoelements'),
-  require('autoprefixer'),
+  import 'postcss-import',
+  import 'postcss-url',
+  import 'postcss-custom-properties',
+  import 'postcss-calc',
+  import 'postcss-color-function',
+  import 'postcss-custom-media',
+  import 'postcss-pseudoelements',
+  import 'autoprefixer',
 ];
 gulp.task('css', () => gulp.src('./src/index.css')
   .pipe(postcss(processors))
