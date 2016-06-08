@@ -75,10 +75,6 @@ gulp.task('eslint', () => gulp.src(['./src/index.js', 'gulpfile.js'])
   .pipe(eslint.format())
   .pipe(eslint.failAfterError()));
 
-import ghPages from 'gulp-gh-pages';
-gulp.task('deploy', () => gulp.src('build/**/*')
-  .pipe(ghPages()));
-
 import connect from 'gulp-connect';
 gulp.task('connect', () => {
   connect.server({
