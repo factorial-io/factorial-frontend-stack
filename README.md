@@ -20,7 +20,7 @@ build:js | Compile and bundle all JS files to `build/index.js`.*
 start | Start a development server at `http://localhost:8080`.
 test | Run all tests. 
 test:unit | Run all unit tests.
-test:browser | Run all browser tests.*
+test:browser | Run all browser tests.
 test:lint-css | Lint all CSS files.
 test:lint-js | Lint all JS files.
 watch | Watch for file changes in `src` and trigger a new build.*

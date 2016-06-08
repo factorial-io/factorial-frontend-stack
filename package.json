@@ -4,8 +4,8 @@
   "description": "A functional boilerplate of the Factorial frontend stack",
   "main": "index.js",
   "repository": {
-    "type" : "git",
-    "url" : "https://source.factorial.io/factorial/factorial-frontend-stack.git"
+    "type": "git",
+    "url": "https://source.factorial.io/factorial/factorial-frontend-stack.git"
   },
   "author": "Milan Matull <milan@factorial.io>",
   "license": "MIT",
@@ -17,6 +17,7 @@
     "start": "gulp connect",
     "test": "npm-run-all -p test:*",
     "test:unit": "gulp ava",
+    "test:browser": "gulp mocha",
     "test:lint-js": "gulp eslint",
     "test:lint-css": "gulp stylelint"
   },
@@ -44,7 +45,6 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-stylelint": "^2.0.2",
     "gulp-util": "^3.0.7",
-    "jsdom": "^9.2.1",
     "lodash": "^4.13.1",
     "mocha": "^2.5.3",
     "npm-run-all": "^2.1.1",
@@ -61,10 +61,5 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"
-  },
-  "ava": {
-    "require": [
-      "./test/helpers/setup-browser-env.js"
-    ]
   }
 }
