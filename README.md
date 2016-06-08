@@ -24,16 +24,3 @@ test:browser | Run all browser tests.
 test:lint-css | Lint all CSS files.
 test:lint-js | Lint all JS files.
 watch | Watch for file changes in `src` and trigger a new build.*
-
-## Secondary
-
-`npm run ...` | Description
----|---
-build:svg | Create SVG sprites.*
-build:clean | Delete all files in `build`.*
-deploy | *
-deploy:gh-pages | Deploy the `gh-pages` branch.*
-deploy:changelog | Update the changelog in `README.md`*
-deploy:tag | Create a new git tag with the current version.*
-deploy:publish | Publish to the npm registry. *
-deploy:version | Bump the current version.*
