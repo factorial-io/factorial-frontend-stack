@@ -37,4 +37,3 @@ deploy:changelog | Update the changelog in `README.md`*
 deploy:tag | Create a new git tag with the current version.*
 deploy:publish | Publish to the npm registry. *
 deploy:version | Bump the current version.*
-start | Start a development server at `http://localhost:3000`.*
