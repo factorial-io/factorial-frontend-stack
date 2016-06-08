@@ -19,7 +19,8 @@
     "test:unit": "gulp ava",
     "test:browser": "gulp mocha",
     "test:lint-js": "gulp eslint",
-    "test:lint-css": "gulp stylelint"
+    "test:lint-css": "gulp stylelint",
+    "watch": "gulp watch"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
