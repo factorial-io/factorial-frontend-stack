@@ -1,11 +1,18 @@
-import gulp from 'gulp';
-import postcss from 'gulp-postcss';
-import stylelint from 'gulp-stylelint';
-import eslint from 'gulp-eslint';
+import babel from 'babelify';
+import browserify from 'browserify';
+import buffer from 'vinyl-buffer';
 import connect from 'gulp-connect';
+import eslint from 'gulp-eslint';
+import exit from 'gulp-exit';
+import gulp from 'gulp';
 import mochaPhantomJS from 'gulp-mocha-phantomjs';
 import plumber from 'gulp-plumber';
+import postcss from 'gulp-postcss';
+import rename from 'gulp-rename';
+import source from 'vinyl-source-stream';
 import sourcemaps from 'gulp-sourcemaps';
+import stylelint from 'gulp-stylelint';
+import watchify from 'watchify';
 
 const processors = [
   require('postcss-import'),
@@ -28,47 +35,6 @@ gulp.task('build:css', () => {
     .pipe(connect.reload());
 });
 
-gulp.task('lint:css', () => gulp.src('lib/index.css')
-  .pipe(plumber())
-  .pipe(stylelint(
-    {
-      reporters: [
-        {
-          formatter: 'string',
-          console: true,
-        },
-      ],
-    }
-  )
-));
-
-gulp.task('lint:js', () => gulp.src(['lib/index.js', 'gulpfile.js'])
-  .pipe(plumber())
-  .pipe(eslint())
-  .pipe(eslint.format())
-  .pipe(eslint.failAfterError()));
-
-gulp.task('start', () => {
-  connect.server({
-    root: 'build',
-    livereload: true,
-  });
-});
-
-gulp.task('test:browser', () =>
-  gulp.src('test/behavior/behavior.html')
-    .pipe(mochaPhantomJS())
-);
-
-// bundlejs
-
-import exit from 'gulp-exit';
-import source from 'vinyl-source-stream';
-import buffer from 'vinyl-buffer';
-import browserify from 'browserify';
-import watchify from 'watchify';
-import babel from 'babelify';
-
 function compileJS(flag) {
   const bundler = watchify(browserify('./lib/index.js', { debug: true }).transform(babel));
 
@@ -89,8 +55,8 @@ function compileJS(flag) {
   }
 
   if (flag) {
-    bundler.on('update', () => {
-      console.log('-> bundling...');
+    bundler.on('update', (ids) => {
+      console.log(`-> bundling... ${ids}`);
       rebundle();
     });
 
@@ -101,9 +67,38 @@ function compileJS(flag) {
 }
 
 gulp.task('build:js', () => compileJS());
-gulp.task('watch:js', () => compileJS(true));
 
-import rename from 'gulp-rename';
+gulp.task('lint:css', () => gulp.src('lib/index.css')
+  .pipe(plumber())
+  .pipe(stylelint(
+    {
+      reporters: [
+        {
+          formatter: 'string',
+          console: true,
+        },
+      ],
+    }
+  )
+));
+
+gulp.task('lint:js', () => gulp.src(['lib/index.js', 'gulpfile.js'])
+  .pipe(plumber())
+  .pipe(eslint())
+  .pipe(eslint.format())
+  .pipe(eslint.failAfterError()));
+
+gulp.task('server', () => {
+  connect.server({
+    root: 'build',
+    livereload: true,
+  });
+});
+
+gulp.task('test:browser', () =>
+  gulp.src('test/behavior/behavior.html')
+    .pipe(mochaPhantomJS())
+);
 
 gulp.task('build:test', () => {
   gulp.src('test/visual/visual.html')
@@ -120,15 +115,13 @@ gulp.task('build:test', () => {
     .pipe(connect.reload());
 });
 
-/*
- * Watch task
- */
-
 gulp.task('watch:css', () => {
   gulp.watch([
     'lib/**/*.css',
   ], ['build:css']);
 });
+
+gulp.task('watch:js', () => compileJS(true));
 
 gulp.task('watch:test', () => {
   gulp.watch([
@@ -140,5 +133,5 @@ gulp.task('default', [
   'watch:css',
   'watch:js',
   'watch:test',
-  'start',
+  'server',
 ]);

@@ -1,7 +1,12 @@
+:root {
+  --ComponentName-background-color: #03c;
+}
+
 .ComponentName {
-  padding: .2em;
+  padding: .5em .75em;
   color: #fff;
-  background-color: #03c;
+  background-color: var(--ComponentName-background-color);
+  border: 0;
 }
 
 .ComponentName--modifierName {
@@ -9,7 +14,7 @@
 }
 
 .ComponentName-descendentName {
-  padding: .2em .4em;
+  padding: .25em .5em;
   font-size: .8em;
   background-color: color(#fff alpha(50%));
   border-radius: 2px;

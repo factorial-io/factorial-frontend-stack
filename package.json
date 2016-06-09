@@ -15,12 +15,11 @@
     "build:js": "gulp build:js",
     "build:test": "gulp build:test",
     "deploy": "gulp deploy",
-    "server": "gulp connect",
+    "server": "gulp server",
     "test": "npm-run-all -p test:*",
-    "test:unit": "gulp ava",
-    "test:browser": "gulp mocha",
-    "test:lint-js": "gulp eslint",
-    "test:lint-css": "gulp stylelint",
+    "test:browser": "gulp test:browser",
+    "test:lint-js": "gulp lint:js",
+    "test:lint-css": "gulp lint:css",
     "watch": "gulp"
   },
   "devDependencies": {
