@@ -41,7 +41,7 @@ gulp.task('eslint', () => gulp.src(['lib/index.js', 'gulpfile.js'])
 
 gulp.task('connect', () => {
   connect.server({
-    root: 'dist',
+    root: 'build',
   });
 });
 
@@ -102,3 +102,15 @@ function watchJS() {
 gulp.task('js', () => compileJS());
 gulp.task('watch', () => watchJS());
 gulp.task('default', ['watch']);
+
+import rename from 'gulp-rename';
+
+gulp.task('test:visual', () => {
+  gulp.src('test/visual/visual.html')
+    .pipe(rename('index.html'))
+    .pipe(gulp.dest('build'));
+  gulp.src('test/visual/visual.css')
+    .pipe(rename('test.css'))
+    .pipe(postcss(processors))
+    .pipe(gulp.dest('build'));
+});

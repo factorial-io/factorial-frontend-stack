@@ -1,5 +1,16 @@
-.SuperAwesomeSelector {
-  margin-bottom: .5;
-  padding-bottom: 0;
-  transform: translate3d(20px, 20px, 20px);
+.ComponentName {
+  color: #fff;
+  background-color: #03c;
+}
+
+.ComponentName--modifierName {
+  font-size: 1.5rem;
+}
+
+.ComponentName-descendentName {
+  font-size: .8em;
+}
+
+.ComponentName.is-stateOfComponent {
+  background-color: #000;
 }

@@ -18,6 +18,7 @@
     "test": "npm-run-all -p test:*",
     "test:unit": "gulp ava",
     "test:browser": "gulp mocha",
+    "test:visual": "gulp test:visual",
     "test:lint-js": "gulp eslint",
     "test:lint-css": "gulp stylelint",
     "watch": "gulp watch"
@@ -45,6 +46,7 @@
     "gulp-exit": "0.0.2",
     "gulp-mocha-phantomjs": "^0.11.0",
     "gulp-postcss": "^6.1.1",
+    "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-stylelint": "^2.0.2",
     "gulp-util": "^3.0.7",

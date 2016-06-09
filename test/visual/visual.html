@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <title>ComponentName [component] - SUIT CSS</title>
 <meta name="viewport" content="initial-scale=1,width=device-width">
-<link rel="stylesheet" href="../build/test.css">
+<link rel="stylesheet" href="test.css">
 <style>
   #textWrapping {
     width: 300px;
@@ -19,21 +19,27 @@
   <h2 class="Test-describe">.ComponentName</h2>
   <h3 class="Test-it">renders</h3>
   <div class="Test-run" id="renders">
-    <!-- component configuration 1 -->
-  </div>
-  <h3 class="Test-it">prevents text wrapping</h3>
-  <div class="Test-run" id="textWrapping">
-    <!-- component configuration 1 -->
+    <button class="ComponentName">
+      <span class="ComponentName-descendentName">Hot</span>
+      Lorem ipsum dolor
+    </button>
   </div>
 
   <h2 class="Test-describe">.ComponentName--modifier</h2>
   <h3 class="Test-it">renders larger</h3>
   <div class="Test-run" id="modifier-larger">
-    <!-- component configuration 2 -->
+    <button class="ComponentName ComponentName--modifierName">
+      <span class="ComponentName-descendentName">Hot</span>
+      Lorem ipsum dolor
+    </button>
   </div>
-  <h3 class="Test-it">allows text wrapping</h3>
-  <div class="Test-run" id="modifier-textWrapping">
-    <!-- component configuration 2 -->
+
+  <h2 class="Test-describe">.ComponentName.is-stateOfComponent</h2>
+  <h3 class="Test-it">changes state</h3>
+  <div class="Test-run" id="state-of-component">
+    <button class="ComponentName is-stateOfComponent">
+      <span class="ComponentName-descendentName">Hot</span>
+      Lorem ipsum dolor
+    </button>
   </div>
 </div>
-
