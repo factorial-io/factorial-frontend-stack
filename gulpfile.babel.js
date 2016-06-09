@@ -3,9 +3,9 @@ import postcss from 'gulp-postcss';
 import stylelint from 'gulp-stylelint';
 import eslint from 'gulp-eslint';
 import connect from 'gulp-connect';
-import ava from 'gulp-ava';
 import mochaPhantomJS from 'gulp-mocha-phantomjs';
 import plumber from 'gulp-plumber';
+import sourcemaps from 'gulp-sourcemaps';
 
 const processors = [
   require('postcss-import'),
@@ -21,7 +21,9 @@ const processors = [
 gulp.task('build:css', () => {
   gulp.src('lib/index.css')
     .pipe(plumber())
+    .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(postcss(processors))
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('build'))
     .pipe(connect.reload());
 });
@@ -53,11 +55,6 @@ gulp.task('start', () => {
   });
 });
 
-gulp.task('test:unit', () =>
-  gulp.src('test/unit/unit.js')
-    .pipe(ava())
-);
-
 gulp.task('test:browser', () =>
   gulp.src('test/behavior/behavior.html')
     .pipe(mochaPhantomJS())
@@ -65,7 +62,6 @@ gulp.task('test:browser', () =>
 
 // bundlejs
 
-import sourcemaps from 'gulp-sourcemaps';
 import exit from 'gulp-exit';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';

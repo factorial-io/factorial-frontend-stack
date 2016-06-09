@@ -1,6 +1,6 @@
 {
   "name": "factorial-frontend-stack",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A functional boilerplate of the Factorial frontend stack",
   "main": "index.js",
   "repository": {
@@ -15,13 +15,13 @@
     "build:js": "gulp build:js",
     "build:test": "gulp build:test",
     "deploy": "gulp deploy",
-    "start": "gulp connect",
+    "server": "gulp connect",
     "test": "npm-run-all -p test:*",
     "test:unit": "gulp ava",
     "test:browser": "gulp mocha",
     "test:lint-js": "gulp eslint",
     "test:lint-css": "gulp stylelint",
-    "watch": "gulp watch"
+    "watch": "gulp"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
