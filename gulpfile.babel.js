@@ -13,6 +13,7 @@ import source from 'vinyl-source-stream';
 import sourcemaps from 'gulp-sourcemaps';
 import stylelint from 'gulp-stylelint';
 import watchify from 'watchify';
+import ghPages from 'gulp-gh-pages';
 
 const processors = [
   require('postcss-import'),
@@ -135,3 +136,8 @@ gulp.task('default', [
   'watch:test',
   'server',
 ]);
+
+gulp.task('deploy', () => {
+  gulp.src('build/**/*')
+    .pipe(ghPages());
+});
