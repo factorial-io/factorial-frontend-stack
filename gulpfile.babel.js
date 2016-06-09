@@ -5,6 +5,7 @@ import eslint from 'gulp-eslint';
 import connect from 'gulp-connect';
 import ava from 'gulp-ava';
 import mochaPhantomJS from 'gulp-mocha-phantomjs';
+import plumber from 'gulp-plumber';
 
 const processors = [
   require('postcss-import'),
@@ -17,11 +18,16 @@ const processors = [
   require('autoprefixer'),
 ];
 
-gulp.task('css', () => gulp.src('lib/index.css')
-  .pipe(postcss(processors))
-  .pipe(gulp.dest('build')));
+gulp.task('build:css', () => {
+  gulp.src('lib/index.css')
+    .pipe(plumber())
+    .pipe(postcss(processors))
+    .pipe(gulp.dest('build'))
+    .pipe(connect.reload());
+});
 
-gulp.task('stylelint', () => gulp.src('lib/index.css')
+gulp.task('lint:css', () => gulp.src('lib/index.css')
+  .pipe(plumber())
   .pipe(stylelint(
     {
       reporters: [
@@ -34,23 +40,25 @@ gulp.task('stylelint', () => gulp.src('lib/index.css')
   )
 ));
 
-gulp.task('eslint', () => gulp.src(['lib/index.js', 'gulpfile.js'])
+gulp.task('lint:js', () => gulp.src(['lib/index.js', 'gulpfile.js'])
+  .pipe(plumber())
   .pipe(eslint())
   .pipe(eslint.format())
   .pipe(eslint.failAfterError()));
 
-gulp.task('connect', () => {
+gulp.task('start', () => {
   connect.server({
     root: 'build',
+    livereload: true,
   });
 });
 
-gulp.task('ava', () =>
+gulp.task('test:unit', () =>
   gulp.src('test/unit/unit.js')
     .pipe(ava())
 );
 
-gulp.task('mocha', () =>
+gulp.task('test:browser', () =>
   gulp.src('test/behavior/behavior.html')
     .pipe(mochaPhantomJS())
 );
@@ -75,12 +83,13 @@ function compileJS(flag) {
         console.error(err);
         this.emit('end');
       })
+      .pipe(plumber())
       .pipe(source('index.js'))
       .pipe(buffer())
       .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest('./build'));
-      // .pipe(exit());
+      // .pipe(exit()); // REVIEW
   }
 
   if (flag) {
@@ -91,26 +100,49 @@ function compileJS(flag) {
 
     rebundle();
   } else {
-    rebundle().pipe(exit());
+    rebundle().pipe(exit()); // REVIEW
   }
 }
 
-function watchJS() {
-  return compileJS(true);
-}
-
-gulp.task('js', () => compileJS());
-gulp.task('watch', () => watchJS());
-gulp.task('default', ['watch']);
+gulp.task('build:js', () => compileJS());
+gulp.task('watch:js', () => compileJS(true));
 
 import rename from 'gulp-rename';
 
 gulp.task('build:test', () => {
   gulp.src('test/visual/visual.html')
+    .pipe(plumber())
     .pipe(rename('index.html'))
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('build'))
+    .pipe(connect.reload());
+
   gulp.src('test/visual/visual.css')
+    .pipe(plumber())
     .pipe(rename('test.css'))
     .pipe(postcss(processors))
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('build'))
+    .pipe(connect.reload());
 });
+
+/*
+ * Watch task
+ */
+
+gulp.task('watch:css', () => {
+  gulp.watch([
+    'lib/**/*.css',
+  ], ['build:css']);
+});
+
+gulp.task('watch:test', () => {
+  gulp.watch([
+    'test/visual/**/*.*',
+  ], ['build:test']);
+});
+
+gulp.task('default', [
+  'watch:css',
+  'watch:js',
+  'watch:test',
+  'start',
+]);

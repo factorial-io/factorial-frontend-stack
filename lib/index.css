@@ -1,4 +1,5 @@
 .ComponentName {
+  padding: .2em;
   color: #fff;
   background-color: #03c;
 }
@@ -8,9 +9,12 @@
 }
 
 .ComponentName-descendentName {
+  padding: .2em .4em;
   font-size: .8em;
+  background-color: color(#fff alpha(50%));
+  border-radius: 2px;
 }
 
 .ComponentName.is-stateOfComponent {
-  background-color: #000;
+  background-color: #333;
 }
