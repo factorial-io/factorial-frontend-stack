@@ -105,7 +105,7 @@ gulp.task('default', ['watch']);
 
 import rename from 'gulp-rename';
 
-gulp.task('test:visual', () => {
+gulp.task('build:test', () => {
   gulp.src('test/visual/visual.html')
     .pipe(rename('index.html'))
     .pipe(gulp.dest('build'));

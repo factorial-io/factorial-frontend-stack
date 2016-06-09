@@ -13,12 +13,12 @@
     "build": "npm-run-all build:*",
     "build:css": "gulp css",
     "build:js": "gulp js",
+    "build:test": "gulp build:test",
     "deploy": "gulp deploy",
     "start": "gulp connect",
     "test": "npm-run-all -p test:*",
     "test:unit": "gulp ava",
     "test:browser": "gulp mocha",
-    "test:visual": "gulp test:visual",
     "test:lint-js": "gulp eslint",
     "test:lint-css": "gulp stylelint",
     "watch": "gulp watch"
