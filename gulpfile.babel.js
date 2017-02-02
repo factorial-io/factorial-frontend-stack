@@ -14,6 +14,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import stylelint from 'gulp-stylelint';
 import watchify from 'watchify';
 import ghPages from 'gulp-gh-pages';
+import stylefmt from 'gulp-stylefmt';
 
 const processors = [
   require('postcss-import'),
