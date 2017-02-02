@@ -70,10 +70,11 @@ function compileJS(flag) {
 
 gulp.task('build:js', () => compileJS());
 
-gulp.task('lint:css', () => gulp.src('lib/index.css')
+gulp.task('lint:css', () => gulp.src('lib/*.css')
   .pipe(plumber())
   .pipe(stylelint(
     {
+      failAfterError: false,
       reporters: [
         {
           formatter: 'string',
@@ -83,6 +84,14 @@ gulp.task('lint:css', () => gulp.src('lib/index.css')
     }
   )
 ));
+
+gulp.task('lint:fix-css', () => gulp.src('lib/*.css')
+  .pipe(stylefmt(
+  {
+      failAfterError: false, 
+    }))
+  .pipe(gulp.dest('lib'))
+);
 
 gulp.task('lint:js', () => gulp.src(['lib/index.js', 'gulpfile.js'])
   .pipe(plumber())
