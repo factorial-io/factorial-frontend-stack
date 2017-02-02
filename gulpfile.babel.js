@@ -88,7 +88,18 @@ gulp.task('lint:js', () => gulp.src(['lib/index.js', 'gulpfile.js'])
   .pipe(plumber())
   .pipe(eslint())
   .pipe(eslint.format())
-  .pipe(eslint.failAfterError()));
+);
+
+
+gulp.task('lint:fix-js', () => gulp.src(['lib/*.js', 'gulpfile.js'])
+  .pipe(eslint({fix:true}))
+  .pipe(eslint())
+  .pipe(eslint.format())
+  .pipe(gulp.dest('lib'))
+);
+
+
+
 
 gulp.task('server', () => {
   connect.server({
