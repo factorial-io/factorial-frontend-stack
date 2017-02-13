@@ -25,3 +25,14 @@ test:browser | Run all browser tests.
 test:lint-css | Lint all CSS files.
 test:lint-js | Lint all JS files.
 watch | Watch for file changes in `lib` and trigger a new build.
+
+## Autofix Coding Style Errors
+
+These are descructive operations that *overwrite* their respective sources. Use 
+with caution. 
+
+`npm run ...` | Description
+---|---
+fix | Fix coding style errors. 
+fix:css | Fix css coding style through stylefmt. 
+fix:js | Fix js coding style through eslint. 
