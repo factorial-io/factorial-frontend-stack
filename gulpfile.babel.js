@@ -85,11 +85,8 @@ gulp.task('lint:css', () => gulp.src('lib/*.css')
   )
 ));
 
-gulp.task('lint:fix-css', () => gulp.src('lib/*.css')
-  .pipe(stylefmt(
-  {
-      failAfterError: false, 
-    }))
+gulp.task('fix:css', () => gulp.src('lib/*.css')
+  .pipe(stylefmt({ failAfterError: false }))
   .pipe(gulp.dest('lib'))
 );
 
@@ -99,16 +96,12 @@ gulp.task('lint:js', () => gulp.src(['lib/index.js', 'gulpfile.js'])
   .pipe(eslint.format())
 );
 
-
-gulp.task('lint:fix-js', () => gulp.src(['lib/*.js', 'gulpfile.js'])
+gulp.task('fix:js', () => gulp.src(['lib/*.js'])
   .pipe(eslint({fix:true}))
   .pipe(eslint())
   .pipe(eslint.format())
   .pipe(gulp.dest('lib'))
 );
-
-
-
 
 gulp.task('server', () => {
   connect.server({
