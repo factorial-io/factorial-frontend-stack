@@ -14,6 +14,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import stylelint from 'gulp-stylelint';
 import watchify from 'watchify';
 import ghPages from 'gulp-gh-pages';
+import stylefmt from 'gulp-stylefmt';
 
 const processors = [
   require('postcss-import'),
@@ -69,10 +70,11 @@ function compileJS(flag) {
 
 gulp.task('build:js', () => compileJS());
 
-gulp.task('lint:css', () => gulp.src('lib/index.css')
+gulp.task('lint:css', () => gulp.src('lib/*.css')
   .pipe(plumber())
   .pipe(stylelint(
     {
+      failAfterError: false,
       reporters: [
         {
           formatter: 'string',
@@ -83,11 +85,30 @@ gulp.task('lint:css', () => gulp.src('lib/index.css')
   )
 ));
 
+gulp.task('lint:fix-css', () => gulp.src('lib/*.css')
+  .pipe(stylefmt(
+  {
+      failAfterError: false, 
+    }))
+  .pipe(gulp.dest('lib'))
+);
+
 gulp.task('lint:js', () => gulp.src(['lib/index.js', 'gulpfile.js'])
   .pipe(plumber())
   .pipe(eslint())
   .pipe(eslint.format())
-  .pipe(eslint.failAfterError()));
+);
+
+
+gulp.task('lint:fix-js', () => gulp.src(['lib/*.js', 'gulpfile.js'])
+  .pipe(eslint({fix:true}))
+  .pipe(eslint())
+  .pipe(eslint.format())
+  .pipe(gulp.dest('lib'))
+);
+
+
+
 
 gulp.task('server', () => {
   connect.server({

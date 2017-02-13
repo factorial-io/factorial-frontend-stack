@@ -19,6 +19,8 @@
     "test": "npm-run-all -p test:*",
     "test:browser": "gulp test:browser",
     "test:lint-js": "gulp lint:js",
+    "test:fix-css": "gulp lint:fix-css",
+    "test:fix-js": "gulp lint:fix-js",
     "test:lint-css": "gulp lint:css",
     "watch": "gulp"
   },
@@ -49,6 +51,7 @@
     "gulp-postcss": "^6.1.1",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.6.0",
+    "gulp-stylefmt": "^1.1.0",
     "gulp-stylelint": "^2.0.2",
     "gulp-util": "^3.0.7",
     "lodash": "^4.13.1",
