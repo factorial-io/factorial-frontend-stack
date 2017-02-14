@@ -1,6 +1,6 @@
 {
   "name": "factorial-frontend-stack",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A functional boilerplate of the Factorial frontend stack",
   "main": "index.js",
   "repository": {
