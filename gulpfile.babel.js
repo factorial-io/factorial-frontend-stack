@@ -97,7 +97,7 @@ gulp.task('lint:js', () => gulp.src(['lib/index.js', 'gulpfile.js'])
 );
 
 gulp.task('fix:js', () => gulp.src(['lib/*.js'])
-  .pipe(eslint({fix:true}))
+  .pipe(eslint({ fix: true }))
   .pipe(eslint())
   .pipe(eslint.format())
   .pipe(gulp.dest('lib'))
