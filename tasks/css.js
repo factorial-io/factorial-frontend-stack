@@ -14,23 +14,23 @@ const postcssCustomMedia = require('postcss-custom-media');
 const postcssPseudoelements = require('postcss-pseudoelements');
 const autoprefixer = require('autoprefixer');
 
-const processors = [
-  postcssImport,
-  postcssUrl,
-  postcssCustomProperties,
-  postcssCalc,
-  postcssColorFunction,
-  postcssCustomMedia,
-  postcssPseudoelements,
-  autoprefixer,
-];
-
 module.exports = (gulp, config, tasks) => {
   gulp.task('build:css', (done) => {
     gulp.src(config.css.src)
       .pipe(plumber())
       .pipe(sourcemaps.init({ loadMaps: true }))
-      .pipe(postcss(processors))
+      .pipe(postcss([
+        postcssImport,
+        postcssUrl,
+        postcssCustomProperties,
+        postcssCalc,
+        postcssColorFunction,
+        postcssCustomMedia,
+        postcssPseudoelements,
+        autoprefixer({
+          browsers: config.css.browserslist,
+        }),
+      ]))
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest(config.css.dest))
       .pipe(connect.reload())
