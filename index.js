@@ -9,4 +9,8 @@ module.exports = (gulp, options, tasks) => {
   if (config.css.enabled) {
     require('./tasks/css.js')(gulp, config, tasks);
   }
+
+  if (config.js.enabled) {
+    require('./tasks/js.js')(gulp, config, tasks);
+  }
 };

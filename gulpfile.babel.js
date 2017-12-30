@@ -5,37 +5,17 @@ import connect from 'gulp-connect';
 import eslint from 'gulp-eslint';
 import exit from 'gulp-exit';
 import gulp from 'gulp';
-import mochaPhantomJS from 'gulp-mocha-phantomjs';
 import plumber from 'gulp-plumber';
-import postcss from 'gulp-postcss';
-import rename from 'gulp-rename';
 import source from 'vinyl-source-stream';
 import sourcemaps from 'gulp-sourcemaps';
-import stylelint from 'gulp-stylelint';
 import watchify from 'watchify';
+
+import mochaPhantomJS from 'gulp-mocha-phantomjs';
+import rename from 'gulp-rename';
+
 import ghPages from 'gulp-gh-pages';
-import stylefmt from 'gulp-stylefmt';
 
-const processors = [
-  require('postcss-import'),
-  require('postcss-url'),
-  require('postcss-custom-properties'),
-  require('postcss-calc'),
-  require('postcss-color-function'),
-  require('postcss-custom-media'),
-  require('postcss-pseudoelements'),
-  require('autoprefixer'),
-];
-
-gulp.task('build:css', () => {
-  gulp.src('lib/index.css')
-    .pipe(plumber())
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(postcss(processors))
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('build'))
-    .pipe(connect.reload());
-});
+const config = require('./config.default.js');
 
 function compileJS(flag) {
   const bundler = watchify(browserify('./lib/index.js', { debug: true }).transform(babel));
@@ -69,26 +49,6 @@ function compileJS(flag) {
 }
 
 gulp.task('build:js', () => compileJS());
-
-gulp.task('lint:css', () => gulp.src('lib/*.css')
-  .pipe(plumber())
-  .pipe(stylelint(
-    {
-      failAfterError: false,
-      reporters: [
-        {
-          formatter: 'string',
-          console: true,
-        },
-      ],
-    }
-  )
-));
-
-gulp.task('fix:css', () => gulp.src('lib/*.css')
-  .pipe(stylefmt({ failAfterError: false }))
-  .pipe(gulp.dest('lib'))
-);
 
 gulp.task('lint:js', () => gulp.src(['lib/index.js', 'gulpfile.js'])
   .pipe(plumber())

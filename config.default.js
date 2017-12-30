@@ -18,9 +18,10 @@ module.exports = {
   },
   js: {
     enabled: true,
-    src: [
-      './lib/index.js',
-    ],
+    browserify: {
+      src: './lib/index.js', // entry point for browserify bundle
+    },
+    source: 'index.js', // entry point for vinyl source stream
     dest: './build',
   },
 };
