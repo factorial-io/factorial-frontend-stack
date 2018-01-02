@@ -22,12 +22,12 @@
     "start": "gulp server",
     "test": "npm-run-all -p test:*",
     "test:browser": "gulp test:browser",
-    "test:lint-js": "gulp lint:js",
-    "test:lint-css": "gulp lint:css",
+    "test:lint-js": "eslint ./lib/index.js",
+    "test:lint-css": "stylelint ./lib/index.css",
     "watch": "gulp",
     "fix": "npm-run-all -p fix:*",
-    "fix:js": "gulp fix:js",
-    "fix:css": "gulp fix:css"
+    "fix:js": "prettier ./lib/index.js --write",
+    "fix:css": "stylelint ./lib/index.css --fix"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
@@ -77,6 +77,5 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"
-  },
-  "dependencies": {}
+  }
 }
