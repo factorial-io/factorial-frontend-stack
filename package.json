@@ -29,7 +29,8 @@
     "fix": "npm-run-all -p fix:*",
     "fix:js": "prettier ./lib/index.js --write",
     "fix:css": "stylelint ./lib/index.css --fix",
-    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
+    "stylelint-check": "stylelint-config-prettier-check"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
@@ -74,7 +75,8 @@
     "postcss-url": "^5.1.2",
     "prettier": "^1.9.2",
     "stylelint": "^8.4.0",
-    "stylelint-config-factorial": "^7.1.1",
+    "stylelint-config-prettier": "^3.2.0",
+    "stylelint-config-suitcss": "^14.0.0",
     "suitcss-components-test": "^1.0.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
