@@ -22,12 +22,14 @@
     "start": "gulp server",
     "test": "npm-run-all -p test:*",
     "test:browser": "gulp test:browser",
-    "test:lint-js": "eslint ./lib/index.js",
-    "test:lint-css": "stylelint ./lib/index.css",
+    "lint": "npm-run-all -p lint:*",
+    "lint:js": "eslint ./lib/index.js",
+    "lint:css": "stylelint ./lib/index.css",
     "watch": "gulp",
     "fix": "npm-run-all -p fix:*",
     "fix:js": "prettier ./lib/index.js --write",
-    "fix:css": "stylelint ./lib/index.css --fix"
+    "fix:css": "stylelint ./lib/index.css --fix",
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
