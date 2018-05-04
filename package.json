@@ -27,10 +27,10 @@
     "lint:css": "stylelint ./lib/index.css",
     "watch": "gulp",
     "fix": "npm-run-all -p fix:*",
-    "fix:js": "prettier ./lib/index.js --write",
+    "fix:js": "eslint ./lib/index.js --fix",
     "fix:css": "stylelint ./lib/index.css --fix",
-    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
-    "stylelint-check": "stylelint-config-prettier-check"
+    "check:eslint": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
+    "check:stylelint": "stylelint-config-prettier-check"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
