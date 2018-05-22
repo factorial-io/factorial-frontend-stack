@@ -30,7 +30,8 @@
     "fix:js": "eslint ./lib/index.js --fix",
     "fix:css": "stylelint ./lib/index.css --fix",
     "check:eslint": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
-    "check:stylelint": "stylelint-config-prettier-check"
+    "check:stylelint": "stylelint-config-prettier-check",
+    "precommit": "lint-staged"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
@@ -63,6 +64,8 @@
     "gulp-stylefmt": "^1.1.0",
     "gulp-stylelint": "^3.8.0",
     "gulp-util": "^3.0.7",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.1.2",
     "lodash": "^4.13.1",
     "mocha": "^2.5.3",
     "npm-run-all": "^2.1.1",
@@ -81,5 +84,9 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"
+  },
+  "lint-staged": {
+    "*.js": ["eslint --fix", "git add"],
+    "*.css": ["stylelint --fix", "git add"]
   }
 }
