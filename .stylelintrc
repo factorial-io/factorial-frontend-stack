@@ -1,6 +1,5 @@
 {
   "extends": [
-    "stylelint-config-suitcss",
-    "stylelint-config-prettier"
+    "stylelint-config-suitcss"
   ]
 }
