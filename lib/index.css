@@ -5,10 +5,10 @@
 }
 
 .ComponentName {
-  padding: .5em .75em;
-  color: #fff;
   background-color: var(--ComponentName-background-color);
   border: 0;
+  color: #fff;
+  padding: 0.5em 0.75em;
 }
 
 .ComponentName--modifierName {
@@ -16,10 +16,10 @@
 }
 
 .ComponentName-descendentName {
-  padding: .25em .5em;
-  font-size: .8em;
   background-color: color(#fff alpha(50%));
   border-radius: 2px;
+  font-size: 0.8em;
+  padding: 0.25em 0.5em;
 }
 
 .ComponentName.is-stateOfComponent {
