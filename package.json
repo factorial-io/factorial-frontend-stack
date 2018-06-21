@@ -2,8 +2,8 @@
   "name": "factorial-frontend-stack",
   "version": "0.2.0",
   "engines": {
-    "node": "~7.10.0",
-    "npm": "~4.2.0"
+    "node": "~9.2.1",
+    "npm": "~6.1.0"
   },
   "description": "A functional boilerplate of the Factorial frontend stack",
   "main": "index.js",
@@ -23,12 +23,12 @@
     "test": "npm-run-all -p test:*",
     "test:browser": "gulp test:browser",
     "lint": "npm-run-all -p lint:*",
-    "lint:js": "eslint ./lib/index.js",
-    "lint:css": "stylelint ./lib/index.css",
+    "lint:js": "eslint ./lib/**/*.js",
+    "lint:css": "stylelint ./lib/**/*.css",
     "watch": "gulp",
     "fix": "npm-run-all -p fix:*",
-    "fix:js": "eslint ./lib/index.js --fix",
-    "fix:css": "stylelint ./lib/index.css --fix",
+    "fix:js": "eslint ./lib/**/*.js --fix",
+    "fix:css": "stylelint ./lib/**/*.css --fix",
     "check:eslint": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "check:stylelint": "stylelint-config-prettier-check",
     "precommit": "lint-staged"
@@ -77,16 +77,23 @@
     "postcss-pseudoelements": "^3.0.0",
     "postcss-url": "^5.1.2",
     "prettier": "^1.9.2",
-    "stylelint": "^8.4.0",
+    "stylelint": "^9.0.0",
     "stylelint-config-prettier": "^3.2.0",
     "stylelint-config-suitcss": "^14.0.0",
+    "stylelint-selector-bem-pattern": "^2.0.0",
     "suitcss-components-test": "^1.0.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "git add"],
-    "*.css": ["stylelint --fix", "git add"]
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.css": [
+      "stylelint --fix",
+      "git add"
+    ]
   }
 }
