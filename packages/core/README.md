@@ -12,6 +12,7 @@
 - Watch file changes when in development
 - Minify CSS and JS when building for production
 - Treeshaking for JavaScript modules when building for production
+- Automatic code style fixes (where doable) though stylelint and prettier.
 
 ## Requirements
 
