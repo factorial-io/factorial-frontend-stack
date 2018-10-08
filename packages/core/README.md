@@ -1,6 +1,6 @@
 # Factorial frontend stack core
 
-> `@factorial-io/frontend-stack-core` is Neutrino middleware for building CSS and JS files.
+> `@factorial/frontend-stack-core` is Neutrino middleware for building CSS and JS files.
 
 ## Features
 
@@ -22,18 +22,18 @@
 
 ## Installation
 
-`@factorial-io/frontend-stack-core` can be installed via the Yarn or npm clients.
+`@factorial/frontend-stack-core` can be installed via the Yarn or npm clients.
 
 ## Usage
 
-    yarn add @factorial-io/frontend-stack-core --dev
+    yarn add @factorial/frontend-stack-core --dev
 
 Then add the following your `package.json`.
 
 ```
 "scripts": {
-  "start": "yarn run neutrino start --use @factorial-io/frontend-stack-core",
-  "build": "yarn run neutrino build --use @factorial-io/frontend-stack-core --options.env.NODE_ENV production"
+  "start": "yarn run neutrino start --use @factorial/frontend-stack-core",
+  "build": "yarn run neutrino build --use @factorial/frontend-stack-core --options.env.NODE_ENV production"
 }
 ```
 

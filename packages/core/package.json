@@ -1,5 +1,5 @@
 {
-  "name": "@factorial-io/frontend-stack-core",
+  "name": "@factorial/frontend-stack-core",
   "version": "0.1.0",
   "main": "index.js",
   "author": "Milan Matull <milan@factorial.io> (https://www.factorial.io)",
