@@ -8,10 +8,7 @@
   },
   "description": "A functional boilerplate of the Factorial frontend stack",
   "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://source.factorial.io/factorial/factorial-frontend-stack.git"
-  },
+  "repository": "https://github.com/factorial-io/factorial-frontend-stack/tree/master/packages/gulp",
   "author": "Milan Matull <milan@factorial.io>",
   "license": "MIT",
   "scripts": {

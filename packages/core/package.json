@@ -5,9 +5,7 @@
   "author": "Milan Matull <milan@factorial.io> (https://www.factorial.io)",
   "license": "MIT",
   "private": false,
-  "devDependencies": {
-    "neutrino": "^8.3.0"
-  },
+  "repository": "https://github.com/factorial-io/factorial-frontend-stack/tree/master/packages/gulp",
   "dependencies": {
     "@neutrinojs/babel-minify": "^8.3.0",
     "@neutrinojs/clean": "^8.3.0",
@@ -41,5 +39,8 @@
     "stylelint-config-suitcss": "^14.0.0",
     "stylelint-selector-bem-pattern": "^2.0.0",
     "suitcss-utils-position": "^1.0.1"
+  },
+  "peerDependencies": {
+    "neutrino": "^8.3.0"
   }
 }
