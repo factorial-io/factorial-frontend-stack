@@ -5,6 +5,9 @@
   "author": "Milan Matull <milan@factorial.io> (https://www.factorial.io)",
   "license": "MIT",
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": "https://github.com/factorial-io/factorial-frontend-stack/tree/master/packages/gulp",
   "dependencies": {
     "@neutrinojs/babel-minify": "^8.3.0",
