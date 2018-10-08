@@ -3,7 +3,7 @@
 		"lerna": "^2.2.0"
 	},
 	"name": "factorial-frontend-stack",
-	"version": "0.1.0",
+	"version": "0.4.0",
 	"description": "Packages for the frontend stack of Factorial",
 	"main": "index.js",
 	"repository": "git@github.com:factorial-io/factorial-frontend-stack.git",
