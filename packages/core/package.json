@@ -1,0 +1,49 @@
+{
+  "name": "@factorial-io/frontend-stack-core",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Milan Matull <milan@factorial.io> (https://www.factorial.io)",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/factorial-io/factorial-frontend-stack/tree/master/packages/gulp",
+  "dependencies": {
+    "@neutrinojs/babel-minify": "^8.3.0",
+    "@neutrinojs/clean": "^8.3.0",
+    "@neutrinojs/compile-loader": "^8.3.0",
+    "@neutrinojs/eslint": "^8.3.0",
+    "@neutrinojs/font-loader": "^8.3.0",
+    "@neutrinojs/image-loader": "^8.3.0",
+    "@neutrinojs/loader-merge": "^8.3.0",
+    "@neutrinojs/style-loader": "^8.3.0",
+    "@neutrinojs/style-minify": "^8.3.0",
+    "@neutrinojs/stylelint": "^8.3.0",
+    "autoprefixer": "^9.1.5",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^1.0.0",
+    "deepmerge": "^2.1.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "fast-async": "^6.3.7",
+    "mini-css-extract-plugin": "^0.4.2",
+    "postcss-calc": "^6.0.1",
+    "postcss-color-function": "^4.0.1",
+    "postcss-custom-media": "^6.0.0",
+    "postcss-custom-properties": "^7.0.0",
+    "postcss-import": "^12.0.0",
+    "postcss-loader": "^3.0.0",
+    "prettier": "^1.14.2",
+    "stylelint-config-suitcss": "^14.0.0",
+    "stylelint-selector-bem-pattern": "^2.0.0",
+    "suitcss-utils-position": "^1.0.1"
+  },
+  "peerDependencies": {
+    "neutrino": "^8.3.0"
+  }
+}
