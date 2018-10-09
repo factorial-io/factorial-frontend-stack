@@ -38,3 +38,36 @@ Then add the following your `package.json`.
 ```
 
 Default entry point is `./src/index.js`.
+
+## FAQ
+
+### How do I setup CSS/JS linting in my editor?
+
+You need to setup a `stylelintrc.js` and `eslintrc.js` in your project that uses the configuration provided from the neutrino instance. That way linting through CLI and editor is synced and no config is duplicated.
+
+```js
+// .eslintrc.js
+const { Neutrino } = require('neutrino');
+
+// Specify middleware to Neutrino prior to calling eslintrc.
+// Even if using .neutrinorc.js, you must specify it when using
+// the API
+module.exports = Neutrino({ root: __dirname })
+  .use('.neutrinorc.js')
+  .call('eslintrc');
+```
+> https://neutrinojs.org/packages/eslint/#eslintrc-config
+
+```js
+// .stylelintrc.js
+const { Neutrino } = require('neutrino');
+
+// Specify middleware to Neutrino prior to calling stylelintrc.
+// Even if using .neutrinorc.js, you must specify it when using
+// the API
+module.exports = Neutrino({ root: __dirname })
+  .use('.neutrinorc.js')
+  .call('stylelintrc');
+```
+
+> https://neutrinojs.org/packages/stylelint/#stylelintrc-config
