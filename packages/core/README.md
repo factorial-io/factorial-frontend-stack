@@ -26,7 +26,7 @@
 
 ## Usage
 
-    yarn add @factorial/frontend-stack-core --dev
+    yarn add neutrino @factorial/frontend-stack-core --dev
 
 Then add the following your `package.json`.
 
