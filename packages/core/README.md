@@ -27,13 +27,24 @@
 ## Usage
 
     yarn add neutrino @factorial/frontend-stack-core --dev
+    touch .neutrinorc.js
+
+Then add the following to `.neutrinorc.js`.
+
+```js
+module.exports = {
+  use: [
+    "@factorial/frontend-stack-core"
+  ]
+};
+```
 
 Then add the following your `package.json`.
 
-```
+```json
 "scripts": {
-  "start": "yarn run neutrino start --use @factorial/frontend-stack-core",
-  "build": "yarn run neutrino build --use @factorial/frontend-stack-core --options.env.NODE_ENV production"
+  "start": "yarn run neutrino start",
+  "build": "yarn run neutrino build --options.env.NODE_ENV production"
 }
 ```
 
