@@ -39,6 +39,12 @@ Then add the following your `package.json`.
 
 Default entry point is `./src/index.js`.
 
+## Example
+
+An example can that consumes @factorial/frontend-stack-core can be found at 
+
+https://github.com/factorial-io/factorial-frontend-stack/tree/master/examples/core
+
 ## FAQ
 
 ### How do I setup CSS/JS linting in my editor?
