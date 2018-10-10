@@ -4,7 +4,7 @@ const images = require("@neutrinojs/image-loader");
 const fonts = require("@neutrinojs/font-loader");
 const stylelint = require("@neutrinojs/stylelint");
 const clean = require("@neutrinojs/clean");
-const eslint = require("@neutrinojs/eslint");
+const lint = require("@neutrinojs/eslint");
 const compileLoader = require("@neutrinojs/compile-loader");
 const merge = require("deepmerge");
 const minify = require("@neutrinojs/babel-minify");
@@ -86,21 +86,20 @@ module.exports = (neutrino, opts = {}) => {
     .use(clean, {
       paths: [neutrino.options.output]
     })
-    .use(eslint, {
+    .use(lint, {
       eslint: {
         baseConfig: {
-          extends: ["eslint-config-airbnb-base", "prettier"],
-          plugins: ["prettier"],
-          env: {
-            browser: true
-          },
+          extends: [
+            "airbnb-base",
+            "plugin:prettier/recommended"
+          ],
+          plugins: [
+            "prettier"
+          ],
           rules: {
             "prettier/prettier": "error"
-          },
-          parser: "babel-eslint",
-          settings: {}
-        },
-        exclude: [/node_modules/]
+          }
+        }
       }
     });
   neutrino
