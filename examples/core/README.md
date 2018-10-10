@@ -1,4 +1,4 @@
-# Usage example of @factorial-io/frontend-stack-core
+# Usage example of @factorial/frontend-stack-core
 
 ## Installation
 
