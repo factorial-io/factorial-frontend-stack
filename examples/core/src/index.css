@@ -1,0 +1,99 @@
+/** @define Test */
+
+/**
+ * Test if importing from node_modules is supported.
+ */
+
+@import "suitcss-utils-position";
+
+/**
+ * Test file-loader for webfonts
+ */
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./font.eot"); /* IE9 Compat Modes */
+  src:
+    local("Roboto"),
+    local("Roboto-Regular"),
+    url("./font.eot?#iefix") format("embedded-opentype"),
+    url("./font.woff2") format("woff2")
+    url("./font.woff") format("woff")
+    url("./font.ttf") format("truetype")
+    url("./font.svg#Roboto") format("svg");
+}
+
+/**
+ * Test if postcss-bem-linter is working
+ */
+
+.x-Text {} /* stylelint-disable-line */
+
+/**
+ * Test if custom-properties are resolved.
+ */
+
+:root {
+  --Test-background-color: red;
+}
+
+/**
+ * [1] Uses file-loader
+ */
+
+.Test {
+  background-image: url("./image.png"); /* 1. */
+  display: none;
+  margin: 0;
+  padding: 2rem;
+}
+
+.Test-customProperties {
+  background-color: var(--Test-background-color);
+}
+
+/**
+ * Test if calc is resolved when same unit is given.
+ */
+
+.Test-calc {
+  margin: calc(2rem * 2rem);
+}
+
+/**
+ * Test if color functions are resolved.
+ */
+
+.Test-colorFunction {
+  color: color(#000 alpha(50%));
+}
+
+/**
+ * Test if custom media definition are resolved.
+ */
+
+@custom-media --sm-viewport (max-width: 639px);
+@custom-media --md-viewport (min-width: 640px) and (max-width: 959px);
+@custom-media --lg-viewport (min-width: 960px);
+
+.Test-customMedia {
+  display: block;
+  margin: 0;
+}
+
+@media (--sm-viewport) {
+
+  .Test-customMedia {
+    display: none;
+  }
+}
+
+/**
+ * Test if autoprefixer adds vendor prefixes.
+ */
+
+.Test-autoprefixer {
+  transform: translate(-50%, -50%);
+}
