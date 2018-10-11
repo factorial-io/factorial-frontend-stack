@@ -27,6 +27,30 @@
 ## Usage
 
     yarn add neutrino @factorial/frontend-stack-core --dev
+
+Then add the following your `package.json`.
+
+```json
+"scripts": {
+  "start": "yarn run neutrino start --use @factorial/frontend-stack-core",
+  "build": "yarn run neutrino build --use @factorial/frontend-stack-core --options.env.NODE_ENV production"
+}
+```
+
+Default entry point is `./src/index.js`.
+
+## Example
+
+An example can that consumes @factorial/frontend-stack-core can be found at
+
+https://github.com/factorial-io/factorial-frontend-stack/tree/master/examples/core
+
+## FAQ
+
+### How do I setup CSS/JS linting in my IDE/editor?
+
+#### Add a `.neutrinorc.js` to the project.
+
     touch .neutrinorc.js
 
 Then add the following to `.neutrinorc.js`.
@@ -39,28 +63,14 @@ module.exports = {
 };
 ```
 
-Then add the following your `package.json`.
+You can ommit the `--use` flag in npm scripts then.
 
-```json
-"scripts": {
-  "start": "yarn run neutrino start",
-  "build": "yarn run neutrino build --options.env.NODE_ENV production"
-}
-```
+> https://neutrinojs.org/usage.html#using-multiple-presets
 
-Default entry point is `./src/index.js`.
+#### Setup modules of `stylelintrc` and `eslintrc`
 
-## Example
-
-An example can that consumes @factorial/frontend-stack-core can be found at 
-
-https://github.com/factorial-io/factorial-frontend-stack/tree/master/examples/core
-
-## FAQ
-
-### How do I setup CSS/JS linting in my editor?
-
-You need to setup a `stylelintrc.js` and `eslintrc.js` in your project that uses the configuration provided from the neutrino instance. That way linting through CLI and editor is synced and no config is duplicated.
+You need to setup a `stylelintrc.js` and `eslintrc.js` in your project that uses the configuration provided from the neutrino instance.
+That way linting through CLI and editor is synced and no config is duplicated.
 
 ```js
 // .eslintrc.js
