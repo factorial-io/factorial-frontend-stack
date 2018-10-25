@@ -98,3 +98,21 @@ module.exports = Neutrino({ root: __dirname })
 ```
 
 > https://neutrinojs.org/packages/stylelint/#stylelintrc-config
+
+### How do I change the entry and output paths for my project?
+
+You can ovveride the defaults path options in `.neutrinorc.js`.
+
+> https://neutrinojs.org/customization/#overriding-neutrino-options
+
+#### Example
+
+```js
+options: {
+  source: "source",
+  output: "source/build",
+  mains: {
+    index: "index.js"
+  }
+}
+```
