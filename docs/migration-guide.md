@@ -3,7 +3,7 @@
 
 NB: Currently the following tasks are not yet replaced:
 * Automatic generation if SVG sprite maps
-* Automatic exporting of colours to JSON from PostCSS variables
+* Automatic exporting of colors to JSON from PostCSS variables
 * Running a dev server for serving pattern lab.
 
 Follow the [`feature`](https://github.com/factorial-io/factorial-frontend-stack/issues?q=is%3Aissue+is%3Aopen+label%3Afeature) tag in the issue queue to get updates on that.
@@ -21,8 +21,32 @@ If you want to use `@factorial/frontend-stack-core` now, this means that you nee
 	* `watch:js`
 	* `lint:js`
 	* `lint:css`
-6.  `require("./index.css")` in the js entry point of your project to start the dependency chain for CSS.
-7. Try running a first build you will receive a lot of lint errors.
-8. `Autofix` code style errors for the whole code base / frontend theme. Commit. [See the fix tasks in the usage example](https://github.com/factorial-io/factorial-frontend-stack/blob/master/examples/core/package.json#L20). Commit the stylistic fixes.
-9. Run the neutrino `start` and `build` tasks in conjunction with the remaining gulp.file
-10. Remove all obsolete dependencies from `package.json` :)
+6.  `require("./index.css")` in the js entry point of your project. This will start the dependency chain for CSS.
+7. Try running a first build – You will receive a lot of lint errors.
+8. `Autofix` code style errors for the whole code base. [See the fix tasks in the usage example](https://github.com/factorial-io/factorial-frontend-stack/blob/master/examples/core/package.json#L20). Commit the stylistic fixes.
+9. Fix the remaining lint errors manually.
+10. Run the neutrino `start` and `build` tasks in conjunction with the remaining gulp watch task.
+
+### Remove obsolete dependencies
+
+Once you can successfully build with `@factorial/frontend-stack-core` you can remove a lot of obsolete dependencies from your project. :fireworks
+
+Everything related towards …
+
+* compiling JS (browserify + babel.js)
+* compiling CSS (PostCSS + PostCSS plugins)
+* linting JS (eslint)
+* linting CSS (stylelint)
+* and their respective `gulp` wrappers
+
+… can be safely deleted.
+
+1. Remove obsolete imports in your gulpfile.
+2. Remove obsolete dependencies from package.json.
+
+#### Caveats
+
+* When removing `babel.js`  you might need to replace `import()` statements with `require()` in your gulpfile.
+* If your projects uses the `export colors` task, `postcss` can not be removed.
+* If your projects uses non-standard PostCSS plugins (selector nesting, SVG import, …) you need to add them to the `.neutrinorc.js` file of your project. Or refactor your codebase.
+* If your project uses `browserify shims`, you might need to convert them to [`webpack shims`](https://webpack.js.org/guides/shimming/)
