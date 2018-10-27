@@ -29,7 +29,7 @@ If you want to use `@factorial/frontend-stack-core` now, this means that you nee
 
 ### Remove obsolete dependencies
 
-Once you can successfully build with `@factorial/frontend-stack-core` you can remove a lot of obsolete dependencies from your project. :fireworks
+Once you can successfully build with `@factorial/frontend-stack-core` you can remove a lot of obsolete dependencies from your project. :fireworks:
 
 Everything related towards …
 
