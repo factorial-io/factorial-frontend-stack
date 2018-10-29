@@ -50,3 +50,6 @@ Everything related towards …
 * If your projects uses the `export colors` task, `postcss` can not be removed.
 * If your projects uses non-standard PostCSS plugins (selector nesting, SVG import, …) you need to add them to the `.neutrinorc.js` file of your project. Or refactor your codebase.
 * If your project uses `browserify shims`, you might need to convert them to [`webpack shims`](https://webpack.js.org/guides/shimming/)
+* If you have `/* stylelint-disable */` comments in your codebase, you can not have multiple `disable` comments followed after another. Always add `/* stylelint-enable */` again.
+* If you are using `patternlab`, you need to update the gulp watch task, so patternlab gets build *after* CSS and JS have been compiled.
+* if your projects uses relative urls in CSS, it is not relative to your `main` entry point in javascript, not the current CSS file.
