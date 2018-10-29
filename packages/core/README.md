@@ -47,6 +47,16 @@ https://github.com/factorial-io/factorial-frontend-stack/tree/master/examples/co
 
 ## FAQ
 
+### Why is my CSS not compiled?
+
+You need to import the CSS in your JavaScript entry point so the dependency chain can be started.
+
+```js
+import "./index.css";
+```
+
+> https://github.com/factorial-io/factorial-frontend-stack/blob/master/examples/core/src/index.js#L3
+
 ### How do I setup CSS/JS linting in my IDE/editor?
 
 #### Add a `.neutrinorc.js` to the project.

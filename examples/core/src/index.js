@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 import { square, merge } from "./lib/math";
-import "./index.css";
+import "./index.css"; // starts CSS dependency chain
 
 const s = square(2);
 
