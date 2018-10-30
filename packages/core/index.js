@@ -99,10 +99,11 @@ module.exports = (neutrino, opts = {}) => {
           rules: {
             "prettier/prettier": "error"
           },
-          env: {
-            browser: true
-          }
-        }
+        },
+        envs: [
+          "es6",
+          "browser"
+        ]
       }
     });
   neutrino
