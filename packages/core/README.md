@@ -4,14 +4,15 @@
 
 ## Features
 
-- Build CSS files using our standard PostCSS plugins
-- Stylelint CSS using SUIT CSS configuration
-- Transpile JS using babel
+- Build CSS files using our standard PostCSS plugins.
+- Stylelint CSS using SUIT CSS configuration.
+- Transpile JS using babel.
 - Eslint JS using airbnb + prettier
-- Automatically resolve paths to images and fonts, inline when suitable
-- Watch file changes when in development
-- Minify CSS and JS when building for production
-- Treeshaking for JavaScript modules when building for production
+- Sets `browser` env as default eslint environment.
+- Automatically resolve paths to images and fonts, inline when suitable.
+- Watch file changes when in development.
+- Minify CSS and JS when building for production.
+- Treeshaking for JavaScript modules when building for production.
 - Automatic code style fixes (where doable) though stylelint and prettier.
 
 ## Requirements
