@@ -98,6 +98,9 @@ module.exports = (neutrino, opts = {}) => {
           ],
           rules: {
             "prettier/prettier": "error"
+          },
+          env: {
+            browser: true
           }
         }
       }
