@@ -204,10 +204,10 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@factorial/frontend-stack-core@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@factorial/frontend-stack-core/-/frontend-stack-core-0.2.1.tgz#1022d20ba9b6afbf4fb74de4646dba7a304daf8f"
-  integrity sha512-oMAxi6iZ/bBuneTl2YAdYCVz3VPpd6lEtoC4cRrzGbP9tV1pZMEFoorGzJ94ZNCobf5GfepOUJQolBBX/lADgw==
+"@factorial/frontend-stack-core@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@factorial/frontend-stack-core/-/frontend-stack-core-0.3.0.tgz#d32ec3350afd371806a7d18fa65daeb8be2d52df"
+  integrity sha512-Y+mT2Y38O0BhqAel1PBpYet+Gv5pSD3IEdLsIPOGPf/niac/UjXsN0+g1XhI/BsvPy93GJtbU8WsUpHfBGNALw==
   dependencies:
     "@neutrinojs/babel-minify" "^8.3.0"
     "@neutrinojs/clean" "^8.3.0"
