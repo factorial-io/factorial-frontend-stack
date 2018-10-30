@@ -1,6 +1,6 @@
 {
   "name": "@factorial/frontend-stack-core",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "main": "index.js",
   "author": "Milan Matull <milan@factorial.io> (https://www.factorial.io)",
   "license": "MIT",
