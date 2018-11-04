@@ -1,0 +1,18 @@
+{
+  "name": "dev-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@factorial/frontend-stack-core": "^0.3.1",
+    "neutrino": "^8.3.0"
+  },
+  "scripts": {
+    "start": "yarn run neutrino start",
+    "build": "yarn run neutrino build --options.env.NODE_ENV production",
+    "lint:css": "yarn run neutrino stylelint",
+    "lint:js": "yarn run neutrino lint",
+    "fix:css": "yarn run neutrino stylelint --fix",
+    "fix:js": "yarn run neutrino lint --fix"
+  }
+}
