@@ -1,5 +1,6 @@
 module.exports = {
   use: [
-    "@factorial/frontend-stack-core"
+    "@factorial/frontend-stack-core",
+    "@neutrinojs/dev-server"
   ]
 };

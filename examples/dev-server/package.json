@@ -5,6 +5,7 @@
   "license": "MIT",
   "devDependencies": {
     "@factorial/frontend-stack-core": "^0.3.1",
+    "@neutrinojs/dev-server": "^8.3.0",
     "neutrino": "^8.3.0"
   },
   "scripts": {
