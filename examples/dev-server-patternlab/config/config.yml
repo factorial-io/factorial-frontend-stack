@@ -16,8 +16,8 @@ patternStates:
 styleGuideExcludes: ''
 cacheBusterOn: 'true'
 exportDir: export
-publicDir: public
-sourceDir: source
+publicDir: build
+sourceDir: src
 defaultPattern: all
 defaultShowPatternInfo: false
 ishMinimum: '240'
