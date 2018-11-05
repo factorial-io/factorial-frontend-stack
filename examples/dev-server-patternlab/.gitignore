@@ -1,8 +1,7 @@
 .DS_Store
 .idea
 export/*
-public/*
+build/*
 vendor/*
-source/styleguide/*
+src/styleguide/*
 config/*.json
-

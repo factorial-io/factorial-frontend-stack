@@ -1,0 +1,21 @@
+/** @define Block */
+
+:root {
+  --Block-background-color: #03c;
+}
+
+.Block {
+  background: var(--Block-background-color);
+  color: #fff;
+  padding: 1rem;
+  width: 8rem;
+}
+
+.Block-element {
+  padding: 1rem;
+}
+
+.Block-element--modifier {
+  background-color: #c00;
+  padding: 1rem;
+}
