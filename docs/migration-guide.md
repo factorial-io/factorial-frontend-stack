@@ -46,7 +46,7 @@ Everything related towards …
 
 #### Caveats
 
-* When removing `babel.js`  you might need to replace `import()` statements with `require()` in your gulpfile.
+* When removing `babel.js`, it might occur that you can not use es6 `import` your gulpfile anymore. Replace it with `require`. In the rest of your codebase you can use es6 imports as expect.
 * If your projects uses the `export colors` task, `postcss` can not be removed.
 * If your projects uses non-standard PostCSS plugins (selector nesting, SVG import, …) you need to add them to the `.neutrinorc.js` file of your project. Or refactor your codebase.
 * If your project uses `browserify shims`, you might need to convert them to [`webpack shims`](https://webpack.js.org/guides/shimming/)
