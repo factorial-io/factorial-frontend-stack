@@ -16,6 +16,12 @@
 }
 
 .Block-element--modifier {
-  background-color: #c00;
+  background-color: #00f;
   padding: 1rem;
+}
+
+/** @end */
+
+body {
+  background-color: #ccc;
 }

@@ -1,6 +1,8 @@
 module.exports = {
   use: [
     "@factorial/frontend-stack-core",
-    "@neutrinojs/dev-server"
+    ["@neutrinojs/dev-server", {
+      contentBase: 'build'
+    }]
   ]
 };
