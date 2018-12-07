@@ -73,11 +73,14 @@ module.exports = (neutrino, opts = {}) => {
 
   const staticDir = join(neutrino.options.source, "static");
 
+  // Enable multiple entry points
+  const mains = neutrino.options.mains;
+  const keys = Object.keys(mains).forEach((key) => {
+    neutrino.config.entry(key).add(mains[key]);
+  });
+
   neutrino.config
     .context(neutrino.options.root)
-    .entry("index")
-    .add(neutrino.options.mains.index)
-    .end()
     .output.path(neutrino.options.output)
     .publicPath(options.publicPath)
     .end();
