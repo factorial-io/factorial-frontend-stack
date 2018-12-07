@@ -83,9 +83,9 @@ module.exports = (neutrino, opts = {}) => {
     .end();
 
   neutrino
-    .use(clean, {
-      paths: [neutrino.options.output]
-    })
+    // .use(clean, {
+    //   paths: [neutrino.options.output]
+    // })
     .use(lint, {
       eslint: {
         baseConfig: {
