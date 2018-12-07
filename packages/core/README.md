@@ -127,3 +127,25 @@ options: {
   }
 }
 ```
+
+### How can I setup multiple entry points in my project?
+
+You can set multiple entry points through the mains option in `.neutrinorc.js`.
+
+> https://neutrinojs.org/customization/#optionsmains
+
+#### Example
+
+```js
+module.exports = {
+  use: [
+    "@factorial/frontend-stack-core"
+  ],
+  options: {
+    mains: {
+      a: "a",
+      b: "b"
+    }
+  }
+};
+```
