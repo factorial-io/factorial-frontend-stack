@@ -16,7 +16,7 @@ console.log(window);
 // Test if arrow functions get transpiled
 const test = () => {
   let a = 2;
-  a = 4;
+  a = 3;
 
   return a;
 };
