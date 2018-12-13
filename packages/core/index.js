@@ -69,8 +69,6 @@ module.exports = (neutrino, opts = {}) => {
     )
   });
 
-  console.log(options.babel);
-
   const staticDir = join(neutrino.options.source, "static");
 
   // Enable multiple entry points
