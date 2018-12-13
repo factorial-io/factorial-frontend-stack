@@ -9,6 +9,7 @@ const compileLoader = require("@neutrinojs/compile-loader");
 const merge = require("deepmerge");
 const minify = require("@neutrinojs/babel-minify");
 const styleMinify = require("@neutrinojs/style-minify");
+
 const MODULES = join(__dirname, "node_modules");
 
 module.exports = (neutrino, opts = {}) => {
@@ -31,12 +32,9 @@ module.exports = (neutrino, opts = {}) => {
 
   if (!options.targets.node && !options.targets.browsers) {
     options.targets.browsers = [
-      "last 2 Chrome versions",
-      "last 2 Firefox versions",
-      "last 2 Edge versions",
-      "last 2 Opera versions",
-      "last 2 Safari versions",
-      "last 2 iOS versions"
+      "last 2 versions",
+      ">0.5%",
+      "not ie 10"
     ];
   }
 
@@ -71,11 +69,13 @@ module.exports = (neutrino, opts = {}) => {
     )
   });
 
+  console.log(options.babel);
+
   const staticDir = join(neutrino.options.source, "static");
 
   // Enable multiple entry points
-  const mains = neutrino.options.mains;
-  const keys = Object.keys(mains).forEach((key) => {
+  const { mains } = neutrino.options;
+  Object.keys(mains).forEach(key => {
     neutrino.config.entry(key).add(mains[key]);
   });
 
@@ -104,7 +104,6 @@ module.exports = (neutrino, opts = {}) => {
           },
         },
         envs: [
-          "es6",
           "browser"
         ]
       }

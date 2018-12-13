@@ -12,3 +12,13 @@ console.log(format(new Date(), "d.m.Y"));
 
 // Test if window object is set to global
 console.log(window);
+
+// Test if arrow functions get transpiled
+const test = () => {
+  let a = 2;
+  a = 4;
+
+  return a;
+};
+
+console.log(test());
