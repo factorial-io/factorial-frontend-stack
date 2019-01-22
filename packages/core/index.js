@@ -155,12 +155,11 @@ module.exports = (neutrino, opts = {}) => {
   neutrino.config
     .when(isProduction, () => neutrino.use(minify))
     .when(isProduction, () => neutrino.use(styleMinify))
-    // Adds source maps
-    // TODO: Find a way to sourcemap CSS when extracting in production
     .when(
-      isProduction,
-      config => config.devtool("source-map"),
+      !isProduction,
       config => config.devtool("inline-source-map")
+      // TODO: Support external source maps in production
+      // config => config.devtool("source-map"),
     )
     .resolve.modules.add("node_modules")
     .add(neutrino.options.node_modules)
