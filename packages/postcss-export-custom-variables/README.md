@@ -1,4 +1,4 @@
-# Factorial frontend stack core
+# Factorial frontend stack postcss-export-custom-variables
 
 > `@factorial/frontend-stack-postcss-export-custom-variables` is Neutrino middleware for [postcss-export-custom-variables](https://github.com/jonathantneal/postcss-export-custom-variables)
 

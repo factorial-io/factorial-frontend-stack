@@ -1,6 +1,6 @@
 # Factorial frontend stack
 
-> Packages for the frontend stack of Factorial
+> Packages for the frontend stack of Factorial – zero initial configuration.
 
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 
@@ -16,6 +16,11 @@ https://github.com/factorial-io/factorial-frontend-stack/tree/master/examples/co
 
 #### Migration Guide
 https://github.com/factorial-io/factorial-frontend-stack/blob/master/docs/migration-guide.md
+
+### @factorial/frontend-stack-postcss-export-custom-variables
+
+#### Package
+https://github.com/factorial-io/factorial-frontend-stack/tree/master/packages/postcss-export-custom-variables
 
 ---
 
