@@ -1,0 +1,20 @@
+{
+  "name": "@factorial/frontend-stack-postcss-export-custom-variables",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "Milan Matull <milan@factorial.io> (https://www.factorial.io)",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/factorial-io/factorial-frontend-stack/tree/master/packages/postcss-export-custom-variables",
+  "dependencies": {
+    "@neutrinojs/style-loader": "^8.3.0",
+    "postcss-export-custom-variables": "^1.0.0",
+    "postcss-loader": "^3.0.0"
+  },
+  "peerDependencies": {
+    "neutrino": "^8.3.0"
+  }
+}
