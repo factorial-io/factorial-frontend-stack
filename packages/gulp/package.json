@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@factoria-io/factorial-frontend-stack-gulp",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "engines": {
     "node": "~9.2.1",
     "npm": "~6.1.0"
