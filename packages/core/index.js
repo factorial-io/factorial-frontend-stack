@@ -9,6 +9,8 @@ const compileLoader = require("@neutrinojs/compile-loader");
 const merge = require("deepmerge");
 const minify = require("@neutrinojs/babel-minify");
 const styleMinify = require("@neutrinojs/style-minify");
+const devServer = require("@neutrinojs/dev-server");
+const WriteFilePlugin = require("write-file-webpack-plugin");
 
 const MODULES = join(__dirname, "node_modules");
 
@@ -83,10 +85,23 @@ module.exports = (neutrino, opts = {}) => {
     .publicPath(options.publicPath)
     .end();
 
+  neutrino.use(devServer, {
+    contentBase: './public',
+    watchContentBase: true,
+    // open: true,
+  });
+
+  neutrino.config.plugin("WriteFilePlugin").use(new WriteFilePlugin({
+    // Prevents patternlab watcher from crashing because of partial files.
+    atomicReplace: false,
+  }));
+
   neutrino
+    // Use clean to delete everything in output folder before next build.
     .use(clean, {
       paths: [neutrino.options.output]
     })
+    // Use lint to lint JS
     .use(lint, {
       eslint: {
         baseConfig: {
@@ -106,14 +121,18 @@ module.exports = (neutrino, opts = {}) => {
         ]
       }
     });
+
   neutrino
+    // Use neutrino compile -loader for ES6 to ES5 with babel
     .use(compileLoader, {
       include: [neutrino.options.source, neutrino.options.tests],
       exclude: [staticDir],
       babel: options.babel
     })
+    // Use neutrino eslint for JS linting
     .use(stylelint, {
       config: {
+        ignoreFiles: "./source/build/**",
         extends: [require.resolve("stylelint-config-suitcss")],
         plugins: [require.resolve("stylelint-selector-bem-pattern")],
         rules: {
@@ -126,6 +145,7 @@ module.exports = (neutrino, opts = {}) => {
         }
       }
     })
+    // Use styles to extract css from JS with potcss and postcss plugins
     .use(styles, {
       extract: {
         plugin: {

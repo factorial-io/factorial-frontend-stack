@@ -13,6 +13,7 @@
     "@neutrinojs/babel-minify": "^8.3.0",
     "@neutrinojs/clean": "^8.3.0",
     "@neutrinojs/compile-loader": "^8.3.0",
+    "@neutrinojs/dev-server": "^8.3.0",
     "@neutrinojs/eslint": "^8.3.0",
     "@neutrinojs/font-loader": "^8.3.0",
     "@neutrinojs/image-loader": "^8.3.0",
@@ -41,7 +42,8 @@
     "prettier": "^1.14.2",
     "stylelint-config-suitcss": "^14.0.0",
     "stylelint-selector-bem-pattern": "^2.0.0",
-    "suitcss-utils-position": "^1.0.1"
+    "suitcss-utils-position": "^1.0.1",
+    "write-file-webpack-plugin": "^4.5.0"
   },
   "peerDependencies": {
     "neutrino": "^8.3.0"
