@@ -9,8 +9,6 @@ const compileLoader = require("@neutrinojs/compile-loader");
 const merge = require("deepmerge");
 const minify = require("@neutrinojs/babel-minify");
 const styleMinify = require("@neutrinojs/style-minify");
-const devServer = require("@neutrinojs/dev-server");
-const WriteFilePlugin = require("write-file-webpack-plugin");
 
 const MODULES = join(__dirname, "node_modules");
 
@@ -84,17 +82,6 @@ module.exports = (neutrino, opts = {}) => {
     .output.path(neutrino.options.output)
     .publicPath(options.publicPath)
     .end();
-
-  neutrino.use(devServer, {
-    contentBase: './public',
-    watchContentBase: true,
-    // open: true,
-  });
-
-  neutrino.config.plugin("WriteFilePlugin").use(new WriteFilePlugin({
-    // Prevents patternlab watcher from crashing because of partial files.
-    atomicReplace: false,
-  }));
 
   neutrino
     // Use clean to delete everything in output folder before next build.
