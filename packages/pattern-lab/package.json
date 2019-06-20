@@ -1,5 +1,5 @@
 {
-  "name": "pattern-lab",
+  "name": "@factorial/frontend-stack-pattern-lab",
   "version": "0.1.0",
   "description": "Webpack dev server to use with patternlab.",
   "main": "index.js",
