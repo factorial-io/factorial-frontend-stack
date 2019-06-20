@@ -1,0 +1,13 @@
+{
+  "name": "@factorial/frontend-stack-pattern-lab",
+  "version": "0.1.0",
+  "description": "Webpack dev server to use with patternlab.",
+  "main": "index.js",
+  "repository": "https://github.com/factorial-io/factorial-frontend-stack/tree/master/packages/frontend-stack-pattern-lab",
+  "author": "Kris Immig <kris@factorial.io>",
+  "license": "MIT",
+  "dependencies": {
+    "@neutrinojs/dev-server": "^8.3.0",
+    "write-file-webpack-plugin": "^4.5.0"
+  }
+}
