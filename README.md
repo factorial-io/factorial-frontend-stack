@@ -6,24 +6,12 @@
 
 ## Packages
 
-### @factorial/frontend-stack-core
+* [@factorial/frontend-stack-core](https://github.com/factorial-io/factorial-frontend-stack/tree/master/packages/core)
+* [@factorial/frontend-stack-pattern-lab](https://github.com/factorial-io/factorial-frontend-stack/tree/master/packages/pattern-lab)
+* [@factorial/frontend-stack-postcss-export-custom-variables](https://github.com/factorial-io/factorial-frontend-stack/tree/master/packages/postcss-export-custom-variables)
 
-#### Package
-https://github.com/factorial-io/factorial-frontend-stack/tree/master/packages/core
+## Archive
 
-#### Usage Example
-https://github.com/factorial-io/factorial-frontend-stack/tree/master/examples/core
+* Our gulp based stack has been archived at https://github.com/factorial-io/factorial-frontend-stack/tree/master/packages/gulp
 
-#### Migration Guide
-https://github.com/factorial-io/factorial-frontend-stack/blob/master/docs/migration-guide.md
 
-### @factorial/frontend-stack-postcss-export-custom-variables
-
-#### Package
-https://github.com/factorial-io/factorial-frontend-stack/tree/master/packages/postcss-export-custom-variables
-
----
-
-Our gulp based stack has been archived at https://github.com/factorial-io/factorial-frontend-stack/tree/master/packages/gulp
-
----
