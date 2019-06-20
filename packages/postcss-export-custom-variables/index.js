@@ -20,7 +20,7 @@ module.exports = (neutrino, options = {}) => {
   // Set default options, based on pattern lab use case
   // @see: https://github.com/jonathantneal/postcss-export-custom-variables#postcss
   const defaults = {
-    destination: path.resolve("source/_patterns/01-theme/theme.json"),
+    destination: path.resolve("source/_patterns/00-theme/theme.json"),
     exporter: jsonExporter,
   }
 
