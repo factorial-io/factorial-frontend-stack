@@ -1,6 +1,6 @@
 # Factorial frontend stack
 
-> Packages for the frontend stack of Factorial – zero initial configuration.
+> Packages for our frontend stack – zero initial configuration.
 
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 
@@ -12,6 +12,7 @@
 
 ## Archive
 
-* Our gulp based stack has been archived at https://github.com/factorial-io/factorial-frontend-stack/tree/master/packages/gulp
+Our gulp based stack has been archived at 
+https://github.com/factorial-io/factorial-frontend-stack/tree/master/packages/gulp
 
 
