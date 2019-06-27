@@ -33,10 +33,9 @@ Then add the following your `package.json`.
 }
 ```
 
-### Run core and dev-server in parallel
+### Run dev-server and patternlab watcher in parallel
 
-To run both the core and pattern-lab packages in parallel with just one terminal
-command add this snippet to your packages.json (replacing other commands with same name)
+To run both the dev-server and pattern-lab watch task in parallel with just one terminal command add this snippet to your packages.json (replacing other commands with same name):
 
 ```json
 "scripts": {
