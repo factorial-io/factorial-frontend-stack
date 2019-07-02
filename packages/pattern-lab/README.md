@@ -47,8 +47,7 @@ To run both the dev-server and pattern-lab watch task in parallel with just one 
 
 ### Add dev-server custom options
 
-You can easily configure the dev-server options by adding an options object to the neutrinorc.js file like so:
-
+You can easily configure this middleware by giving the middleware a JS object with the following options:
 
 ```js
 module.exports = {
@@ -58,8 +57,21 @@ module.exports = {
     [
       "@factorial/frontend-stack-pattern-lab",
       {
-        // Add your dev-server custom options here
-        port: 5001,
+        devServer: {
+          // Add your dev-server custom options here
+          port: 5001,
+        },
+        fileWatcherOptions: {
+          // Add your file-watcher custom options here
+          watchFileRegex: [
+            "source/**/*.twig",
+            "source/**/*.json"
+          ],
+        },
+        writeFileOptions: {
+          // Add your write-file custom options here
+          atomicReplace: true
+        }
       }
     ],
   ],
@@ -68,4 +80,9 @@ module.exports = {
   }
 };
 ```
-A list of available options can be found in the [neutrino dev-server documentation](https://neutrinojs.org/packages/dev-server/).
+
+A list of available options can be found in the respective plugins documentation:
+
+- [neutrino dev-server documentation](https://neutrinojs.org/packages/dev-server/)
+- [write-file-webpack-plugin](https://www.npmjs.com/package/write-file-webpack-plugin)
+- [filewatcher-webpack-plugin](https://www.npmjs.com/package/filewatcher-webpack-plugin)
