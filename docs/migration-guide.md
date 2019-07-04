@@ -3,8 +3,6 @@
 
 NB: Currently the following tasks are not yet replaced:
 * Automatic generation if SVG sprite maps
-* Automatic exporting of colors to JSON from PostCSS variables
-* Running a dev server for serving pattern lab.
 
 Follow the [`feature`](https://github.com/factorial-io/factorial-frontend-stack/issues?q=is%3Aissue+is%3Aopen+label%3Afeature) tag in the issue queue to get updates on that.
 If you want to use `@factorial/frontend-stack-core` now, this means that you need to run it in *parallel* to the gulp based version.
