@@ -19,7 +19,8 @@
     "lint:js": "yarn run neutrino lint",
     "fix": "npm-run-all fix:*",
     "fix:css": "yarn run neutrino stylelint --fix",
-    "fix:js": "yarn run neutrino lint --fix"
+    "fix:js": "yarn run neutrino lint --fix",
+    "test": "neutrino test"
   },
   "dependencies": {
     "date-fns": "^1.29.0",
