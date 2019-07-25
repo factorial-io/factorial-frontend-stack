@@ -3,8 +3,9 @@ const WriteFilePlugin = require("write-file-webpack-plugin");
 const FilewatcherPlugin = require("filewatcher-webpack-plugin");
 const path = require("path");
 const { exec } = require("child_process");
+const debounce = require("lodash.debounce");
 
-function runPatternlabGenerator() {
+const runPatternlabGenerator = debounce(() => {
   exec("php core/console --generate", (error, stdout, stderr) => {
     if (error) {
       // eslint-disable-next-line no-console
@@ -18,7 +19,7 @@ function runPatternlabGenerator() {
       console.log(stderr);
     }
   });
-}
+});
 
 module.exports = (neutrino, options = {}) => {
   const defaults = {

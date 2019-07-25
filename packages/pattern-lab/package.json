@@ -9,6 +9,7 @@
   "dependencies": {
     "@neutrinojs/dev-server": "^8.3.0",
     "filewatcher-webpack-plugin": "^1.2.0",
+    "lodash.debounce": "^4.0.8",
     "write-file-webpack-plugin": "^4.5.0"
   },
   "publishConfig": {
