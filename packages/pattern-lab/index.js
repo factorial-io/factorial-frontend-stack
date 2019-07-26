@@ -56,8 +56,8 @@ module.exports = (neutrino, options = {}) => {
   neutrino.config.plugin("FilewatcherPlugin").use(
     new FilewatcherPlugin({
       watchFileRegex: pluginOptions.filWatcherOptions.watchFileRegex,
-      onReadyCallback: () => runPatternlabGenerator(),
-      onChangeCallback: () => runPatternlabGenerator(),
+      onReadyCallback: runPatternlabGenerator,
+      onChangeCallback: runPatternlabGenerator,
       ignored: pluginOptions.filWatcherOptions.ignored
     })
   );
