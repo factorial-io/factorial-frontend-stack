@@ -1,0 +1,11 @@
+{
+  "name": "@factorial/frontend-stack-jest",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "https://github.com/factorial-io/factorial-frontend-stack/tree/master/packages/frontend-stack-jest",
+  "author": "Andrew Beng",
+  "license": "MIT",
+  "dependencies": {
+    "@neutrinojs/jest": "^8.3.0"
+  }
+}
