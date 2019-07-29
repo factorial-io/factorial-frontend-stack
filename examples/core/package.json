@@ -20,7 +20,7 @@
     "fix": "npm-run-all fix:*",
     "fix:css": "yarn run neutrino stylelint --fix",
     "fix:js": "yarn run neutrino lint --fix",
-    "test": "neutrino test"
+    "test": "yarn run neutrino test"
   },
   "dependencies": {
     "date-fns": "^1.29.0",

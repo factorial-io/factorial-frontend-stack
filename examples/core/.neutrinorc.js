@@ -1,8 +1,6 @@
-const jest = require("../../packages/jest");
-
 module.exports = {
   use: [
     "@factorial/frontend-stack-core",
-    jest
+    "@factorial/frontend-stack-jest"
   ]
 };
