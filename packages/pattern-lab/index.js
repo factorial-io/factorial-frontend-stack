@@ -5,8 +5,10 @@ const path = require("path");
 const { exec } = require("child_process");
 const debounce = require("lodash.debounce");
 
+const GENERATE_CMD = "env PATTERNLAB_LOCAL_SERVER=1 php core/console --generate";
+
 const runPatternlabGenerator = debounce(() => {
-  exec("php core/console --generate", (error, stdout, stderr) => {
+  exec(GENERATE_CMD, (error, stdout, stderr) => {
     if (error) {
       // eslint-disable-next-line no-console
       console.error(`Error in "frontend-stack-pattern-lab": ${error}`);
