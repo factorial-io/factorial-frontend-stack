@@ -44,7 +44,7 @@ Default entry point is `./src/index.js`.
 
 An example can that consumes @factorial/frontend-stack-core can be found at
 
-https://github.com/factorial-io/factorial-frontend-stack/tree/master/examples/core
+https://github.com/factorial-io/factorial-frontend-stack/tree/master/example
 
 ## FAQ
 
@@ -56,7 +56,7 @@ You need to import the CSS in your JavaScript entry point so the dependency chai
 import "./index.css";
 ```
 
-> https://github.com/factorial-io/factorial-frontend-stack/blob/master/examples/core/src/index.js#L3
+> https://github.com/factorial-io/factorial-frontend-stack/blob/master/example/src/index.js#L3
 
 ### How do I setup CSS/JS linting in my IDE/editor?
 

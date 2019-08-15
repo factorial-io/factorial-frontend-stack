@@ -32,4 +32,4 @@ Then add the following your `package.json`.
 ## Example
 
 Another working example can be found at
-https://github.com/factorial-io/factorial-frontend-stack/tree/master/examples/core
+https://github.com/factorial-io/factorial-frontend-stack/tree/master/example
