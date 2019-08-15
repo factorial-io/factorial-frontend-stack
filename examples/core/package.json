@@ -6,7 +6,8 @@
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
-    "@factorial/frontend-stack-core": "^0.3.0",
+    "@factorial/frontend-stack-core": "^0.8.0",
+    "@factorial/frontend-stack-jest": "^0.8.1",
     "neutrino": "^8.3.0",
     "npm-run-all": "^4.1.3"
   },
