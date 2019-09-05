@@ -5,21 +5,46 @@ const path = require("path");
 const { exec } = require("child_process");
 const debounce = require("lodash.debounce");
 
+const getTime = () => {
+  const date = new Date();
+  return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+}
+
+const log = message => {
+  console.log('\x1b[36m%s\x1b[0m', message);
+};
+
 const GENERATE_CMD = "env PATTERNLAB_LOCAL_SERVER=1 php core/console --generate";
+const COPY_CMD = "cp -a ./build/. ./public/build/";
+
+const copyAssets = () => exec(COPY_CMD, (error, stdout, stderr) => {
+  log(`✔ Finished at ${getTime()}\n\n`)
+  if (error) {
+    // eslint-disable-next-line no-console
+    console.error(`Error in "frontend-stack-pattern-lab": ${error}`);
+    return;
+  }
+  if (stderr) {
+    // eslint-disable-next-line no-console
+    console.log(stderr);
+  }
+});
 
 const runPatternlabGenerator = debounce(() => {
+  log('✔ Regenerating public patternlab folder..');
   exec(GENERATE_CMD, (error, stdout, stderr) => {
     if (error) {
       // eslint-disable-next-line no-console
       console.error(`Error in "frontend-stack-pattern-lab": ${error}`);
       return;
     }
-    // eslint-disable-next-line no-console
-    console.log(stdout);
     if (stderr) {
       // eslint-disable-next-line no-console
       console.log(stderr);
     }
+
+    log('✔ Copying assets to public patternlab folder..');
+    copyAssets();
   });
 });
 
@@ -36,8 +61,7 @@ module.exports = (neutrino, options = {}) => {
       watchFileRegex: [
         "source/**/*.twig",
         "source/**/*.yaml",
-        "source/**/*.yml",
-        "source/**/*.json"
+        "source/**/*.yml"
       ],
       ignored: "/node_modules/"
     }
