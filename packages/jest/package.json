@@ -1,6 +1,6 @@
 {
   "name": "@factorial/frontend-stack-jest",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "main": "index.js",
   "repository": "https://github.com/factorial-io/factorial-frontend-stack/tree/master/packages/frontend-stack-jest",
   "author": "Andrew Beng",
