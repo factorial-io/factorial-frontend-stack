@@ -5,7 +5,7 @@ const path = require("path");
 const { exec } = require("child_process");
 const debounce = require("lodash.debounce");
 
-const GENERATE_CMD = "env PATTERNLAB_LOCAL_SERVER=1 php core/console --generate";
+const GENERATE_CMD = "composer generate";
 
 const runPatternlabGenerator = debounce(() => {
   exec(GENERATE_CMD, (error, stdout, stderr) => {
