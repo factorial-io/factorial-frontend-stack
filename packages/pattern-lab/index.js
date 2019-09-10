@@ -24,6 +24,8 @@ const runPatternlabGenerator = debounce(() => {
 });
 
 module.exports = (neutrino, options = {}) => {
+  const isProduction = process.env.NODE_ENV === "production";
+
   const defaults = {
     devServer: {
       contentBase: path.resolve("public"),
@@ -49,18 +51,21 @@ module.exports = (neutrino, options = {}) => {
     ...options
   };
 
-  neutrino.use(devServer, pluginOptions.devServer);
+  // Start dev server and file watcher only when not in production
+  if (!isProduction) {
+    neutrino.use(devServer, pluginOptions.devServer);
 
-  neutrino.config
-    .plugin("WriteFilePlugin")
-    .use(new WriteFilePlugin(pluginOptions.writeFileOptions));
+    neutrino.config.plugin("FilewatcherPlugin").use(
+      new FilewatcherPlugin({
+        watchFileRegex: pluginOptions.filWatcherOptions.watchFileRegex,
+        onReadyCallback: runPatternlabGenerator,
+        onChangeCallback: runPatternlabGenerator,
+        ignored: pluginOptions.filWatcherOptions.ignored
+      })
+    );
 
-  neutrino.config.plugin("FilewatcherPlugin").use(
-    new FilewatcherPlugin({
-      watchFileRegex: pluginOptions.filWatcherOptions.watchFileRegex,
-      onReadyCallback: runPatternlabGenerator,
-      onChangeCallback: runPatternlabGenerator,
-      ignored: pluginOptions.filWatcherOptions.ignored
-    })
-  );
+    neutrino.config
+      .plugin("WriteFilePlugin")
+      .use(new WriteFilePlugin(pluginOptions.writeFileOptions));
+  }
 };
