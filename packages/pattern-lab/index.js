@@ -67,7 +67,5 @@ module.exports = (neutrino, options = {}) => {
     neutrino.config
       .plugin("WriteFilePlugin")
       .use(new WriteFilePlugin(pluginOptions.writeFileOptions));
-  } else {
-    runPatternlabGenerator();
   }
 };
