@@ -5,7 +5,7 @@ frontend applications.
 
 ## How it works
 
-We use [neutrino.js](https://neutrinojs.org) and a set of custom build
+We use [neutrino.js](https://neutrinojs.org) and a set of custom
 middlewares to abstract away the repeating and cumbersome parts of webpack
 configuration. Features are split into indivual packages that can be combined
 depending on your project's needs.

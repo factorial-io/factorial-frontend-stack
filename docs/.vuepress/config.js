@@ -1,6 +1,7 @@
 module.exports = {
+  base: "/factorial-frontend-stack",
   title: "Factorial Frontend Stack",
-  description: "Zero initial configuration",
+  description: "Modern frontend tooling with minimal configuration",
   themeConfig: {
     repo: "factorial-io/factorial-frontend-stack",
     editLinks: true,
