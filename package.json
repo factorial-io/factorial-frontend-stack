@@ -1,10 +1,15 @@
 {
-	"devDependencies": {
-		"lerna": "^3.16.4"
-	},
-	"name": "factorial-frontend-stack",
-	"description": "Packages for the frontend stack of Factorial",
-	"author": "Milan Matull <milan@factorial.io> (https://www.factorial.io)",
-	"license": "MIT",
-	"private": true
+  "name": "factorial-frontend-stack",
+  "description": "Packages for the frontend stack of Factorial",
+  "author": "Milan Matull <milan@factorial.io> (https://www.factorial.io)",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.16.4",
+    "vuepress": "^1.0.4"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  }
 }

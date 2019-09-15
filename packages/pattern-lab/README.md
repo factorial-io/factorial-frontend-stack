@@ -2,6 +2,10 @@
 
 > `@factorial/frontend-stack-pattern-lab` is Neutrino middleware that creates a dev-server that serves your patternlab files.
 
+::: warning Heads up
+This package has an implicit dependency to [pattern-lab-edition-factorial](https://github.com/factorial-io/pattern-lab-edition-factorial)
+:::
+
 ## Features
 
 - Runs the neutrinojs dev server in localhost:5000

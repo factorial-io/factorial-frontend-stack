@@ -25,7 +25,7 @@ If you want to use `@factorial/frontend-stack-core` now, this means that you nee
 9. Fix the remaining lint errors manually.
 10. Run the neutrino `start` and `build` tasks in conjunction with the remaining gulp watch task.
 
-### Remove obsolete dependencies
+## Remove obsolete dependencies
 
 Once you can successfully build with `@factorial/frontend-stack-core` you can remove a lot of obsolete dependencies from your project. :fireworks:
 
@@ -42,7 +42,7 @@ Everything related towards …
 1. Remove obsolete imports in your gulpfile.
 2. Remove obsolete dependencies from package.json.
 
-#### Caveats
+## Caveats
 
 * When removing `babel.js`, it might occur that you can not use es6 `import` your gulpfile anymore. Replace it with `require`. In the rest of your codebase you can use es6 imports as expect.
 * If your projects uses the `export colors` task, `postcss` can not be removed.
