@@ -1,5 +1,5 @@
 module.exports = {
-  base: "/factorial-frontend-stack",
+  base: "/factorial-frontend-stack/",
   title: "Factorial Frontend Stack",
   description: "Modern frontend tooling with minimal configuration",
   themeConfig: {
