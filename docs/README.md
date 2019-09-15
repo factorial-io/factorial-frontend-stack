@@ -1,7 +1,6 @@
 ---
 home: true
-#heroImage: http://ci.factorial.io/logo/1/random/color/012954/logo.svg
-heroImage: http://ci.factorial.io/logo/1/random/color/logo.svg
+heroImage: http://ci.factorial.io/logo/1/random/color/012954/logo.svg
 heroText: "Factorial Frontend Stack"
 tagline: Modern frontend tooling with minimal configuration
 actionText: Get Started →
