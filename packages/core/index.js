@@ -31,11 +31,7 @@ module.exports = (neutrino, opts = {}) => {
   );
 
   if (!options.targets.node && !options.targets.browsers) {
-    options.targets.browsers = [
-      "last 2 versions",
-      ">0.5%",
-      "not ie 10"
-    ];
+    options.targets.browsers = ["last 2 versions", ">0.5%", "not ie 10"];
   }
 
   // Using babel settings from @neutrinojs/web, should upgrade to babel7, once
@@ -92,20 +88,13 @@ module.exports = (neutrino, opts = {}) => {
     .use(lint, {
       eslint: {
         baseConfig: {
-          extends: [
-            "airbnb-base",
-            "plugin:prettier/recommended"
-          ],
-          plugins: [
-            "prettier"
-          ],
+          extends: ["airbnb-base", "plugin:prettier/recommended"],
+          plugins: ["prettier"],
           rules: {
             "prettier/prettier": "error"
-          },
+          }
         },
-        envs: [
-          "browser"
-        ]
+        envs: ["browser"]
       }
     });
 
