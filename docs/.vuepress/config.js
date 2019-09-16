@@ -8,6 +8,7 @@ module.exports = {
     editLinkText: "Help us improve this page!",
     sidebarDepth: 0,
     displayAllHeaders: true,
+    docsDir: 'docs',
     sidebar: "auto",
     nav: [
       { text: "Guide", link: "/guide/" },
