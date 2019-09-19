@@ -135,7 +135,9 @@ module.exports = (neutrino, opts = {}) => {
           options: {
             plugins: [
               require("postcss-import"),
-              require("postcss-custom-properties"),
+              require("postcss-custom-properties")({
+                preserve: false
+              }),
               require("postcss-calc"),
               require("postcss-color-function"),
               require("postcss-custom-media"),
