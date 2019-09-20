@@ -1,9 +1,8 @@
-const { join, basename } = require("path");
+const { join } = require("path");
 const styles = require("@neutrinojs/style-loader");
 const images = require("@neutrinojs/image-loader");
 const fonts = require("@neutrinojs/font-loader");
 const stylelint = require("@neutrinojs/stylelint");
-const clean = require("@neutrinojs/clean");
 const lint = require("@neutrinojs/eslint");
 const compileLoader = require("@neutrinojs/compile-loader");
 const merge = require("deepmerge");
@@ -80,10 +79,6 @@ module.exports = (neutrino, opts = {}) => {
     .end();
 
   neutrino
-    // Use clean to delete everything in output folder before next build.
-    .use(clean, {
-      paths: [neutrino.options.output]
-    })
     // Use lint to lint JS
     .use(lint, {
       eslint: {
