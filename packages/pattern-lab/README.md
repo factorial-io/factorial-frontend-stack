@@ -1,6 +1,6 @@
-# Factorial frontend stack pattern-lab
+# Factorial frontend stack pattern lab
 
-> `@factorial/frontend-stack-pattern-lab` is Neutrino middleware that creates a dev-server that serves your patternlab files.
+> `@factorial/frontend-stack-pattern-lab` is Neutrino middleware that runs a dev-server for your pattern lab files.
 
 ::: warning Heads up
 This package has an implicit dependency to [pattern-lab-edition-factorial](https://github.com/factorial-io/pattern-lab-edition-factorial)
@@ -8,12 +8,8 @@ This package has an implicit dependency to [pattern-lab-edition-factorial](https
 
 ## Features
 
-- Runs the neutrinojs dev server in localhost:5000
-- Serves the patternlab **/public** folder
-- Replaces the patternlab dev server
-- Writes files to the build folder on file change
-- Can be run in parallel with **core** in the terminal (see -> Usage)
-- Configurable dev-server options (see -> Usage)
+- Serves patternlab at in a dev server at `http://localhost:5000`
+- Watch for pattern lab file changes, then pattern lab in development
 
 ## Requirements
 
@@ -37,21 +33,10 @@ Then add the following your `package.json`.
 }
 ```
 
-### Run dev-server and patternlab watcher in parallel
+### Configuration
 
-To run both the dev-server and pattern-lab watch task in parallel with just one terminal command add this snippet to your packages.json (replacing other commands with same name):
-
-```json
-"scripts": {
-  "dev:neutrino": "yarn run neutrino start",
-  "dev:patternlab": "php core/console --watch",
-  "start": "run-p dev:*",
-}
-```
-
-### Add dev-server custom options
-
-You can easily configure this middleware by giving the middleware a JS object with the following options:
+You can change the default configuration of this middleware by providing an
+object with the following options in `.neutrionorc.js` at project level.
 
 ```js
 module.exports = {
@@ -84,6 +69,8 @@ module.exports = {
   }
 };
 ```
+
+### Further reading
 
 A list of available options can be found in the respective plugins documentation:
 
