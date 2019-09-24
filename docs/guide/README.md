@@ -16,7 +16,7 @@ depending on your project's needs.
 $ yarn add neutrino @factorial/frontend-stack-core --dev
 ```
 
-Then add the following your `package.json`.
+Then add the following to your `package.json`.
 
 ```json
 "scripts": {
