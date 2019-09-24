@@ -8,8 +8,8 @@ This package has an implicit dependency to [pattern-lab-edition-factorial](https
 
 ## Features
 
-- Serves patternlab at in a dev server at `http://localhost:5000`
-- Watch for pattern lab file changes, then pattern lab in development
+- Serves patternlab in a dev server at `http://localhost:5000`
+- Watch for pattern lab file changes and generates pattern lab in development mode
 
 ## Requirements
 
