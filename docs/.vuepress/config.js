@@ -2,6 +2,7 @@ module.exports = {
   base: "/factorial-frontend-stack/",
   title: "Factorial Frontend Stack",
   description: "Modern frontend tooling with minimal configuration",
+  theme: require.resolve("@factorial/vuepress-theme"),
   themeConfig: {
     repo: "factorial-io/factorial-frontend-stack",
     editLinks: true,

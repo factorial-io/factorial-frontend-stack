@@ -6,6 +6,7 @@
   "private": true,
   "devDependencies": {
     "@factorial/frontend-stack-core": "^0.8.4",
+    "@factorial/vuepress-theme": "1.0.0-alpha.1",
     "lerna": "^3.16.4",
     "neutrino": "^8.3.0",
     "vuepress": "^1.0.4"
