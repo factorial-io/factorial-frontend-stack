@@ -1,0 +1,18 @@
+{
+  "name": "@factorial/frontend-stack-svg-sprite",
+  "version": "0.9.0-alpha.0",
+  "description": "SVG Sprite loader for the Factorial frontend-stack.",
+  "main": "index.js",
+  "author": "Kris Immig <kris@factorial.io>",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "svg-sprite-loader": "^4.1.6",
+    "svgo": "^1.3.0",
+    "svgo-loader": "^2.2.1",
+    "webpack": "^4.41.2"
+  }
+}
