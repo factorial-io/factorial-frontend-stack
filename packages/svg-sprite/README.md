@@ -7,7 +7,9 @@
 - Import SVG files from javascript files
 - A spritemap with all imported SVG files is created
 - Spritemap is automatically injected into DOM
-- SVG are cleaned with [SVGO loader](https://github.com/rpominov/svgo-loader)
+- SVG markup is cleaned with [SVGO loader](https://github.com/rpominov/svgo-loader):
+  - removing all fill and stroke color settings (good for single color icons)
+  - removing unneccessary markup
 
 ## Requirements
 
@@ -36,18 +38,17 @@ use: [
 Import all your SVG files via javascript import statements:
 
 ```javascript
-import "./svgs/close.svg";
 import "./svgs/home.svg";
-import "./svgs/down.svg";
-import "./svgs/profile.svg";
+import "./svgs/close.svg";
 ```
 
 Once imported, you can use them with this HTML snippet:
 ```html
 <svg>
-  <use xlink:href="#{{ NAME_VARIABLE }}"></use>
+  <use xlink:href="#home"></use>
+</svg>
+
+<svg>
+  <use xlink:href="#close"></use>
 </svg>
 ```
-`NAME_VARIABLE` is the name of the svg file, e.g. "close", "home", etc.
-
-

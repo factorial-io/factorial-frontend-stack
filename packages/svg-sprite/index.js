@@ -17,7 +17,7 @@ module.exports = (neutrino, opts = {}) => {
           .options({
             plugins: [
               { removeTitle: true },
-              { removeUselessStrokeAndFill: true }
+              { removeAttrs: { attrs: '(fill|stroke)' } },
             ]
           })
 };
