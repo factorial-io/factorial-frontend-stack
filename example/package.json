@@ -7,21 +7,18 @@
   "private": true,
   "devDependencies": {
     "@factorial/frontend-stack-core": "^0.8.0",
-    "@factorial/frontend-stack-jest": "^0.8.1",
     "neutrino": "^8.3.0",
     "npm-run-all": "^4.1.3"
   },
   "scripts": {
     "start": "yarn run neutrino start",
     "build": "yarn run neutrino build --options.env.NODE_ENV production",
-    "print:eslintrc": "eslint --no-eslintrc --print-config . -c ./.eslintrc.js",
     "lint": "npm-run-all lint:*",
     "lint:css": "yarn run neutrino stylelint",
     "lint:js": "yarn run neutrino lint",
     "fix": "npm-run-all fix:*",
     "fix:css": "yarn run neutrino stylelint --fix",
-    "fix:js": "yarn run neutrino lint --fix",
-    "test": "yarn run neutrino test"
+    "fix:js": "yarn run neutrino lint --fix"
   },
   "dependencies": {
     "date-fns": "^1.29.0",
