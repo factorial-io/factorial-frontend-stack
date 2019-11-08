@@ -6,7 +6,8 @@
   "author": "Andrew Beng",
   "license": "MIT",
   "dependencies": {
-    "@neutrinojs/jest": "^8.3.0"
+    "@neutrinojs/jest": "^8.3.0",
+    "deepmerge": "^4.0.0"
   },
   "private": false,
   "publishConfig": {
