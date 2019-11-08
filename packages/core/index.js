@@ -1,13 +1,20 @@
 const { join } = require("path");
-const styles = require("@neutrinojs/style-loader");
-const images = require("@neutrinojs/image-loader");
-const fonts = require("@neutrinojs/font-loader");
-const stylelint = require("@neutrinojs/stylelint");
-const lint = require("@neutrinojs/eslint");
-const compileLoader = require("@neutrinojs/compile-loader");
 const merge = require("deepmerge");
+const compileLoader = require("@neutrinojs/compile-loader");
+const fonts = require("@neutrinojs/font-loader");
+const images = require("@neutrinojs/image-loader");
+const lint = require("@neutrinojs/eslint");
 const minify = require("@neutrinojs/babel-minify");
+const stylelint = require("@neutrinojs/stylelint");
 const styleMinify = require("@neutrinojs/style-minify");
+const styles = require("@neutrinojs/style-loader");
+
+const postcssImport = require("postcss-import");
+const postcssCustomProperties = require("postcss-custom-properties");
+const postcssCalc = require("postcss-calc");
+const postcssColorFunction = require("postcss-color-function");
+const postcssCustomMedia = require("postcss-custom-media");
+const autoprefixer = require("autoprefixer");
 
 const MODULES = join(__dirname, "node_modules");
 
@@ -129,14 +136,14 @@ module.exports = (neutrino, opts = {}) => {
           useId: "postcss",
           options: {
             plugins: [
-              require("postcss-import"),
-              require("postcss-custom-properties")({
+              postcssImport,
+              postcssCustomProperties({
                 preserve: false
               }),
-              require("postcss-calc"),
-              require("postcss-color-function"),
-              require("postcss-custom-media"),
-              require("autoprefixer")
+              postcssCalc,
+              postcssColorFunction,
+              postcssCustomMedia,
+              autoprefixer
             ]
           }
         }
@@ -149,10 +156,13 @@ module.exports = (neutrino, opts = {}) => {
     .when(isProduction, () => neutrino.use(minify))
     .when(isProduction, () => neutrino.use(styleMinify))
     .when(
-      !isProduction,
-      config => config.devtool("inline-source-map")
-      // TODO: Support external source maps in production
-      // config => config.devtool("source-map"),
+      isProduction,
+      config => {
+        config.devtool("source-map");
+      },
+      config => {
+        config.devtool("inline-source-map");
+      }
     )
     .resolve.modules.add("node_modules")
     .add(neutrino.options.node_modules)
