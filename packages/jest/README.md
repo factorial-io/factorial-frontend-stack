@@ -4,8 +4,8 @@
 
 ## Features
 
-* Uses [@neutrinojs/jest](https://neutrinojs.org/packages/jest/)
-* Looks for test files in `__tests__` folder and by suffix `*.spec.js|*.test.js`
+- Uses [@neutrinojs/jest](https://neutrinojs.org/packages/jest/)
+- Looks for test files in `__tests__` folder and by suffix `*.spec.js|*.test.js`
 
 ## Requirements
 
@@ -19,17 +19,29 @@
 
 ## Usage
 
-    yarn add neutrino @factorial/frontend-stack-pattern-jest --dev
+    yarn add neutrino @factorial/frontend-stack-jest --dev
 
 Then add the following your `package.json`.
 
 ```json
 "scripts": {
-  "test": "yarn run neutrino test --use @factorial/frontend-stack-jest",
+  "test": "neutrino test --use @factorial/frontend-stack-jest",
 }
 ```
 
-## Example
+## Configuration
 
-Another working example can be found at
-https://github.com/factorial-io/factorial-frontend-stack/tree/master/example
+You can change the default location where jest should look for test files by
+providing a regular expression in the middleware options.
+
+```js
+module.exports = {
+  use: [
+    [
+      "@factorial/frontend-stack-jest",
+      {
+        testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.[jt]sx?$"
+      }
+    ],
+  ],
+```
