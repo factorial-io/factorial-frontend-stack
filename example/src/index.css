@@ -19,17 +19,23 @@
     local("Roboto"),
     local("Roboto-Regular"),
     url("./font.eot?#iefix") format("embedded-opentype"),
-    url("./font.woff2") format("woff2")
-    url("./font.woff") format("woff")
-    url("./font.ttf") format("truetype")
-    url("./font.svg#Roboto") format("svg");
+    url("./font.woff2") format("woff2") url("./font.woff") format("woff")
+    url("./font.ttf") format("truetype");
+
+  /* FIXME: svg-fonts must be supported url("./font.svg#Roboto") format("svg"); */
 }
 
 /**
  * Test if postcss-bem-linter is working
  */
 
-.x-Text {} /* stylelint-disable-line */
+/* stylelint-disable plugin/selector-bem-pattern */
+
+.x-Text {
+  margin: 0;
+}
+
+/* stylelint-enable plugin/selector-bem-pattern */
 
 /**
  * Test if custom-properties are resolved.

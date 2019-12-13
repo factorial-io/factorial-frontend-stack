@@ -4,6 +4,11 @@ import { format } from "date-fns";
 import { square, merge } from "./lib/math";
 import "./index.css"; // starts CSS dependency chain
 
+// import svg-sprites
+import "./icons/activity-outline.svg";
+import "./icons/alert-circle-outline.svg";
+import "./icons/alert-triangle-outline.svg";
+
 const s = square(2);
 
 console.log(s);
