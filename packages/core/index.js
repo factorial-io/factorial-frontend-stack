@@ -150,7 +150,9 @@ module.exports = (neutrino, opts = {}) => {
       ]
     })
     .use(images)
-    .use(fonts);
+    .use(fonts, {
+      name: "[name].[ext]",
+    });
 
   neutrino.config
     .when(isProduction, () => neutrino.use(minify))
