@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@factorial/frontend-stack-core": "^0.10.0",
+    "@factorial/frontend-stack-core": "^0.11.0",
     "@factorial/vuepress-theme": "^1.0.0-alpha.1",
     "lerna": "^3.16.4",
     "neutrino": "^8.3.0",
