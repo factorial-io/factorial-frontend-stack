@@ -4,11 +4,10 @@ const compileLoader = require("@neutrinojs/compile-loader");
 const fonts = require("@neutrinojs/font-loader");
 const images = require("@neutrinojs/image-loader");
 const lint = require("@neutrinojs/eslint");
-const minify = require("@neutrinojs/babel-minify");
-const stylelint = require("@neutrinojs/stylelint");
 const styleMinify = require("@neutrinojs/style-minify");
 const styles = require("@neutrinojs/style-loader");
 
+const stylelint = require("stylelint-webpack-plugin");
 const postcssImport = require("postcss-import");
 const postcssCustomProperties = require("postcss-custom-properties");
 const postcssCalc = require("postcss-calc");
@@ -25,13 +24,13 @@ module.exports = (neutrino, opts = {}) => {
     {
       publicPath,
       minify: {
-        source: isProduction
+        source: isProduction,
       },
       polyfills: {
-        async: true
+        async: true,
       },
       babel: {},
-      targets: {}
+      targets: {},
     },
     opts
   );
@@ -40,42 +39,34 @@ module.exports = (neutrino, opts = {}) => {
     options.targets.browsers = ["last 2 versions", ">0.5%", "not ie 10"];
   }
 
-  // Using babel settings from @neutrinojs/web, should upgrade to babel7, once
-  // 9.0 is released
   Object.assign(options, {
-    babel: compileLoader.merge(
+    babel: compileLoader(
       {
         plugins: [
-          ...(options.polyfills.async
-            ? [[require.resolve("fast-async"), { spec: true }]]
-            : []),
-          require.resolve("babel-plugin-syntax-dynamic-import"),
-          require.resolve("babel-plugin-transform-object-rest-spread")
+          require.resolve("@babel/plugin-syntax-dynamic-import"),
+          require.resolve("@babel/plugin-proposal-object-rest-spread"),
         ],
         presets: [
           [
-            require.resolve("babel-preset-env"),
+            require.resolve("@babel/preset-env"),
             {
               debug: neutrino.options.debug,
-              modules: false,
               useBuiltIns: true,
-              exclude: options.polyfills.async
-                ? ["transform-regenerator", "transform-async-to-generator"]
-                : [],
-              targets: options.targets
-            }
-          ]
-        ]
+              shippedProposals: true,
+              targets: options.targets,
+            },
+          ],
+        ],
       },
       options.babel
-    )
+    ),
   });
 
   const staticDir = join(neutrino.options.source, "static");
 
   // Enable multiple entry points
   const { mains } = neutrino.options;
-  Object.keys(mains).forEach(key => {
+  Object.keys(mains).forEach((key) => {
     neutrino.config.entry(key).add(mains[key]);
   });
 
@@ -93,95 +84,103 @@ module.exports = (neutrino, opts = {}) => {
           extends: ["airbnb-base", "plugin:prettier/recommended"],
           plugins: ["prettier"],
           rules: {
-            "prettier/prettier": "error"
-          }
+            "prettier/prettier": "error",
+          },
         },
-        envs: ["browser"]
-      }
-    });
-
-  neutrino
+        envs: ["browser"],
+      },
+    })
     // Use neutrino compile -loader for ES6 to ES5 with babel
     .use(compileLoader, {
       include: [neutrino.options.source, neutrino.options.tests],
       exclude: [staticDir],
-      babel: options.babel
+      babel: options.babel,
     })
     // Use neutrino eslint for JS linting
-    .use(stylelint, {
-      config: {
-        ignoreFiles: "./source/build/**",
-        extends: [require.resolve("stylelint-config-suitcss")],
-        plugins: [require.resolve("stylelint-selector-bem-pattern")],
-        rules: {
-          "plugin/selector-bem-pattern": {
-            preset: "suit",
-            presetOptions: {
-              namespace: ""
-            }
-          }
-        }
-      }
-    })
-    // Use styles to extract css from JS with potcss and postcss plugins
-    .use(styles, {
-      extract: {
-        plugin: {
-          filename: "[name].css"
-        }
-      },
-      loaders: [
-        {
-          loader: require.resolve("postcss-loader"),
-          useId: "postcss",
-          options: {
-            plugins: [
-              postcssImport,
-              postcssCustomProperties({
-                preserve: false
-              }),
-              postcssCalc,
-              postcssColorFunction,
-              postcssCustomMedia,
-              autoprefixer
-            ]
-          }
-        }
-      ]
-    })
+    // .use(stylelint, {
+    //   config: {
+    //     ignoreFiles: "./source/build/**",
+    //     extends: [require.resolve("stylelint-config-suitcss")],
+    //     plugins: [require.resolve("stylelint-selector-bem-pattern")],
+    //     rules: {
+    //       "plugin/selector-bem-pattern": {
+    //         preset: "suit",
+    //         presetOptions: {
+    //           namespace: "",
+    //         },
+    //       },
+    //     },
+    //   },
+    // })
+    // Use styles to extract css from JS with postcss and postcss plugins
+    .use(
+      styles({
+        css: {
+          importLoaders: opts.loaders ? opts.loaders.length : 0,
+        },
+        modules: false,
+        loaders: [
+          {
+            loader: "postcss-loader",
+            useId: "postcss",
+            options: {
+              plugins: [
+                postcssImport,
+                postcssCustomProperties({
+                  preserve: false,
+                }),
+                postcssCalc,
+                postcssColorFunction,
+                postcssCustomMedia,
+                autoprefixer,
+              ],
+            },
+          },
+        ],
+        extract: {
+          enabled: true,
+          loader: {
+            esModule: true,
+          },
+          plugin: {
+            filename: "[name].css",
+          },
+        },
+      })
+    )
     .use(images)
-    .use(fonts, {
-      name: "[name].[ext]",
-    });
+    .use(
+      fonts({
+        name: "[name].[ext]",
+      })
+    );
 
   neutrino.config
-    .when(isProduction, () => neutrino.use(minify))
-    .when(isProduction, () => neutrino.use(styleMinify))
     .when(
       isProduction,
-      config => {
+      (config) => {
         config.devtool("source-map");
       },
-      config => {
+      (config) => {
         config.devtool("inline-source-map");
       }
     )
     .resolve.modules.add("node_modules")
     .add(neutrino.options.node_modules)
     .add(MODULES)
-    .when(__dirname.includes("neutrino-dev"), modules => {
+    .when(__dirname.includes("neutrino-dev"), (modules) => {
       // Add monorepo node_modules to webpack module resolution
       modules.add(join(__dirname, "../../node_modules"));
     })
     .end()
     .extensions.merge(
-      neutrino.options.extensions.concat("json").map(ext => `.${ext}`)
+      neutrino.options.extensions.concat("json").map((ext) => `.${ext}`)
     )
     .end()
     .end()
     .resolveLoader.modules.add(neutrino.options.node_modules)
     .add(MODULES)
-    .when(__dirname.includes("neutrino-dev"), modules => {
+    .when(__dirname.includes("neutrino-dev"), (modules) => {
       // Add monorepo node_modules to webpack module resolution
       modules.add(join(__dirname, "../../node_modules"));
     })

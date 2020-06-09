@@ -7,9 +7,11 @@
   "author": "Kris Immig <kris@factorial.io>",
   "license": "MIT",
   "dependencies": {
-    "@neutrinojs/dev-server": "^8.3.0",
+    "@neutrinojs/dev-server": "^9.2.0",
     "filewatcher-webpack-plugin": "^1.2.0",
     "lodash.debounce": "^4.0.8",
+    "neutrino": "^9.2.0",
+    "webpack-dev-server": "^3.11.0",
     "write-file-webpack-plugin": "^4.5.1"
   },
   "private": false,

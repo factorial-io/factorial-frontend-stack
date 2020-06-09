@@ -8,7 +8,7 @@
   "devDependencies": {
     "@factorial/frontend-stack-core": "^0.8.0",
     "@factorial/frontend-stack-jest": "^0.8.5-alpha.0",
-    "neutrino": "^8.3.0",
+    "neutrino": "^9.2.0",
     "npm-run-all": "^4.1.3"
   },
   "scripts": {
