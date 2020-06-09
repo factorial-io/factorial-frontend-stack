@@ -1,6 +1,6 @@
 {
   "name": "@factorial/frontend-stack-pattern-lab",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "Webpack dev server to use with patternlab.",
   "main": "index.js",
   "repository": "https://github.com/factorial-io/factorial-frontend-stack/tree/master/packages/frontend-stack-pattern-lab",

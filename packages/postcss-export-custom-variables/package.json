@@ -1,6 +1,6 @@
 {
   "name": "@factorial/frontend-stack-postcss-export-custom-variables",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "main": "index.js",
   "author": "Milan Matull <milan@factorial.io> (https://www.factorial.io)",
   "license": "MIT",
