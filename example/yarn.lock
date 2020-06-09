@@ -203,13 +203,12 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@factorial/frontend-stack-core@^0.8.0":
-  version "0.8.4"
-  resolved "https://registry.yarnpkg.com/@factorial/frontend-stack-core/-/frontend-stack-core-0.8.4.tgz#27a4369add6ccbea77e15fa6e4733e0349642153"
-  integrity sha512-asoBHQ4nO99Pxkv5k3fBgT/7BTPIMU9CvB5TS2Hab3lrlfSKIDr+iTiU5gjyNJbaWWp9xadRUaUEGiltyC9DMg==
+"@factorial/frontend-stack-core@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@factorial/frontend-stack-core/-/frontend-stack-core-0.10.0.tgz#f3295253af4878e0e762e39e14c006f9d69ae797"
+  integrity sha512-gOPrQpZrCRrRDdYwMLOmO5LnkwxZ6IdAajtCSgXnfjevIHd9I7On41zdmzCoDItPnODBB/DRGodw6KjOH51CHQ==
   dependencies:
     "@neutrinojs/babel-minify" "^8.3.0"
-    "@neutrinojs/clean" "^8.3.0"
     "@neutrinojs/compile-loader" "^8.3.0"
     "@neutrinojs/eslint" "^8.3.0"
     "@neutrinojs/font-loader" "^8.3.0"
@@ -241,12 +240,13 @@
     stylelint-selector-bem-pattern "^2.1.0"
     suitcss-utils-position "^1.0.1"
 
-"@factorial/frontend-stack-jest@^0.8.5-alpha.0":
-  version "0.8.5-alpha.0"
-  resolved "https://registry.yarnpkg.com/@factorial/frontend-stack-jest/-/frontend-stack-jest-0.8.5-alpha.0.tgz#84cb313c032f6722390a9901c543497004ffb3a9"
-  integrity sha512-fmZ3M/3pqJjrU1dJaISPy9fExy3uzsoPyTdQT20DQPRZ/qyMLOG8tpCyzvzud/74wgg7K75gSdx8fEk6hSGYcA==
+"@factorial/frontend-stack-jest@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@factorial/frontend-stack-jest/-/frontend-stack-jest-0.10.0.tgz#ad809948e267e459deadd15ddb8ca172e0814a87"
+  integrity sha512-lQu9w7+uM+4qWZkXbIshbm1Ssp7RgYX1xs+E6yME/1NoOL9Kyni8d6a9AxAJbvS9pc9C7poeLNMuxbYn50aDjw==
   dependencies:
     "@neutrinojs/jest" "^8.3.0"
+    deepmerge "^4.0.0"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -272,14 +272,6 @@
   dependencies:
     "@neutrinojs/babel-minify-webpack-plugin" "^0.2.0"
     webpack "^3.12.0"
-
-"@neutrinojs/clean@^8.3.0":
-  version "8.3.0"
-  resolved "https://registry.yarnpkg.com/@neutrinojs/clean/-/clean-8.3.0.tgz#30229ca3cde6d2f64c6a2b164f1ffbde04ba2ddb"
-  integrity sha1-MCKco83m0vZMaisWTx/73gS6Lds=
-  dependencies:
-    clean-webpack-plugin "^0.1.19"
-    deepmerge "^1.5.2"
 
 "@neutrinojs/compile-loader@^8.3.0":
   version "8.3.0"
@@ -2139,13 +2131,6 @@ class-utils@^0.3.5:
     define-property "^0.2.5"
     isobject "^3.0.0"
     static-extend "^0.1.1"
-
-clean-webpack-plugin@^0.1.19:
-  version "0.1.19"
-  resolved "https://registry.yarnpkg.com/clean-webpack-plugin/-/clean-webpack-plugin-0.1.19.tgz#ceda8bb96b00fe168e9b080272960d20fdcadd6d"
-  integrity sha512-M1Li5yLHECcN2MahoreuODul5LkjohJGFxLPTjl3j1ttKrF5rgjZET1SJduuqxLAuT1gAPOdkhg03qcaaU1KeA==
-  dependencies:
-    rimraf "^2.6.1"
 
 cli-cursor@^2.1.0:
   version "2.1.0"

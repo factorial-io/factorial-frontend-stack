@@ -1,3 +1,3 @@
 module.exports = {
-  use: ["@factorial/frontend-stack-core", "@factorial/frontend-stack-jest"]
+  use: ["@factorial/frontend-stack-core", "@factorial/frontend-stack-jest"],
 };

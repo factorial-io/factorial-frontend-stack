@@ -25,13 +25,13 @@ module.exports = (neutrino, opts = {}) => {
     {
       publicPath,
       minify: {
-        source: isProduction
+        source: isProduction,
       },
       polyfills: {
-        async: true
+        async: true,
       },
       babel: {},
-      targets: {}
+      targets: {},
     },
     opts
   );
@@ -50,7 +50,7 @@ module.exports = (neutrino, opts = {}) => {
             ? [[require.resolve("fast-async"), { spec: true }]]
             : []),
           require.resolve("babel-plugin-syntax-dynamic-import"),
-          require.resolve("babel-plugin-transform-object-rest-spread")
+          require.resolve("babel-plugin-transform-object-rest-spread"),
         ],
         presets: [
           [
@@ -62,20 +62,20 @@ module.exports = (neutrino, opts = {}) => {
               exclude: options.polyfills.async
                 ? ["transform-regenerator", "transform-async-to-generator"]
                 : [],
-              targets: options.targets
-            }
-          ]
-        ]
+              targets: options.targets,
+            },
+          ],
+        ],
       },
       options.babel
-    )
+    ),
   });
 
   const staticDir = join(neutrino.options.source, "static");
 
   // Enable multiple entry points
   const { mains } = neutrino.options;
-  Object.keys(mains).forEach(key => {
+  Object.keys(mains).forEach((key) => {
     neutrino.config.entry(key).add(mains[key]);
   });
 
@@ -93,11 +93,11 @@ module.exports = (neutrino, opts = {}) => {
           extends: ["airbnb-base", "plugin:prettier/recommended"],
           plugins: ["prettier"],
           rules: {
-            "prettier/prettier": "error"
-          }
+            "prettier/prettier": "error",
+          },
         },
-        envs: ["browser"]
-      }
+        envs: ["browser"],
+      },
     });
 
   neutrino
@@ -105,9 +105,9 @@ module.exports = (neutrino, opts = {}) => {
     .use(compileLoader, {
       include: [neutrino.options.source, neutrino.options.tests],
       exclude: [staticDir],
-      babel: options.babel
+      babel: options.babel,
     })
-    // Use neutrino eslint for JS linting
+    // Use neutrino stylelint for CSS linting
     .use(stylelint, {
       config: {
         ignoreFiles: "./source/build/**",
@@ -117,18 +117,18 @@ module.exports = (neutrino, opts = {}) => {
           "plugin/selector-bem-pattern": {
             preset: "suit",
             presetOptions: {
-              namespace: ""
-            }
-          }
-        }
-      }
+              namespace: "",
+            },
+          },
+        },
+      },
     })
     // Use styles to extract css from JS with potcss and postcss plugins
     .use(styles, {
       extract: {
         plugin: {
-          filename: "[name].css"
-        }
+          filename: "[name].css",
+        },
       },
       loaders: [
         {
@@ -138,16 +138,16 @@ module.exports = (neutrino, opts = {}) => {
             plugins: [
               postcssImport,
               postcssCustomProperties({
-                preserve: false
+                preserve: false,
               }),
               postcssCalc,
               postcssColorFunction,
               postcssCustomMedia,
-              autoprefixer
-            ]
-          }
-        }
-      ]
+              autoprefixer,
+            ],
+          },
+        },
+      ],
     })
     .use(images)
     .use(fonts, {
@@ -159,29 +159,29 @@ module.exports = (neutrino, opts = {}) => {
     .when(isProduction, () => neutrino.use(styleMinify))
     .when(
       isProduction,
-      config => {
+      (config) => {
         config.devtool("source-map");
       },
-      config => {
+      (config) => {
         config.devtool("inline-source-map");
       }
     )
     .resolve.modules.add("node_modules")
     .add(neutrino.options.node_modules)
     .add(MODULES)
-    .when(__dirname.includes("neutrino-dev"), modules => {
+    .when(__dirname.includes("neutrino-dev"), (modules) => {
       // Add monorepo node_modules to webpack module resolution
       modules.add(join(__dirname, "../../node_modules"));
     })
     .end()
     .extensions.merge(
-      neutrino.options.extensions.concat("json").map(ext => `.${ext}`)
+      neutrino.options.extensions.concat("json").map((ext) => `.${ext}`)
     )
     .end()
     .end()
     .resolveLoader.modules.add(neutrino.options.node_modules)
     .add(MODULES)
-    .when(__dirname.includes("neutrino-dev"), modules => {
+    .when(__dirname.includes("neutrino-dev"), (modules) => {
       // Add monorepo node_modules to webpack module resolution
       modules.add(join(__dirname, "../../node_modules"));
     })

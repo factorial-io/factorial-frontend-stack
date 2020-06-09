@@ -7,7 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "@neutrinojs/jest": "^8.3.0",
-    "deepmerge": "^4.0.0"
+    "deepmerge": "^4.2.2"
   },
   "private": false,
   "publishConfig": {
